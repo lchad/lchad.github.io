@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-6f6b02115b4dd4c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-77fd08ffdabb6763.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-75f6fc4882828960.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-03-06T13:56:44.617Z">
+<meta property="og:updated_time" content="2017-03-06T14:05:27.587Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Genymotion那点事儿">
 <meta name="twitter:description" content="Genymotion是一款非常好用的Android模拟器.它在Android开发者中使用率估计也是最高的.在我使用Genymotion的一年多时间内,碰到过几个令人蛋疼甚至蛋碎的问题,折腾它也浪费了我很多的精力和时间,所以今天就把使用Genymotion中遇到的问题做一个总结,希望大家尤其是像我一样的新手避免重复踩坑,把尽可能多的精力都花在代码上.
@@ -357,7 +357,7 @@
       
         <p><code>Genymotion</code>是一款非常好用的Android模拟器.它在Android开发者中使用率估计也是最高的.在我使用Genymotion的一年多时间内,碰到过几个令人蛋疼甚至蛋碎的问题,折腾它也浪费了我很多的精力和时间,所以今天就把使用Genymotion中遇到的问题做一个总结,希望大家尤其是像我一样的新手避免重复踩坑,把尽可能多的精力都花在代码上.</p>
 <p>关于如何安装Genymotion的问题我不会多说,也没这个必要,因为无论我怎么说肯定没有官方网站上<code>文档</code>讲的清楚.比较重要的点稍微提一下:<br><strong>1.</strong>要去<a href="https://www.genymotion.com/" target="_blank" rel="external">Genymotion官网</a>注册一个账号.<br><strong>2.</strong>安装<a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" rel="external">Virtual Box</a>虚拟机。<br><a id="more"></a><br>现在我假设你已经成功安装了Genymotion.接下来介绍一下你<code>可能</code>遇到的各种奇葩的问题.</p>
-<p>##No.1 : 无法下载Genymotion内的镜像<br>大概在2015年下半年的时候,我突然遇到了这样令人<code>懵逼</code>的情况:不翻墙的时候无法安装虚拟机镜像，挂上了ShadowSocks之类的代理之后还是没办法安装，在Genymotion里登录账号的时候它可能会这样:</p>
+<h2 id="No-1-无法下载Genymotion内的镜像"><a href="#No-1-无法下载Genymotion内的镜像" class="headerlink" title="No.1 : 无法下载Genymotion内的镜像"></a>No.1 : 无法下载Genymotion内的镜像</h2><p>大概在2015年下半年的时候,我突然遇到了这样令人<code>懵逼</code>的情况:不翻墙的时候无法安装虚拟机镜像，挂上了ShadowSocks之类的代理之后还是没办法安装，在Genymotion里登录账号的时候它可能会这样:</p>
 <pre><code>genymotion invalid reply from server this may occur if you are using a proxy
 </code></pre><p>即使登陆成功但是选择一个镜像点击下载的时候会还<code>可能</code>会这样：</p>
 <pre><code>Unable to create virtual device. server returned HTTP status code 0.
@@ -392,7 +392,7 @@ ova_url: &quot;http://files2.genymotion.com/dists/5.1.0/ova/genymotion_vbox86tp_
 <pre><code>C:\Users\liuchad\AppData\Local\Genymobile\Genymotion\ova
 </code></pre><p>最后重新进入到Genymotion的下载界面,点击你这个ova文件对应的那个镜像下载,瞬间就下载好了.</p>
 <p><strong>强调一下:</strong>以上请把<code>liuchad</code>替换成你自己的系统用户名.</p>
-<p>##No.2 : 无法安装应用<br>如此费尽周折之后,你高兴的成功安装好了Genymotion,也下载好了各种机型的虚拟机,准备开心的写代码了,但这世界往往不会如想象的那么美好.</p>
+<h2 id="No-2-无法安装应用"><a href="#No-2-无法安装应用" class="headerlink" title="No.2 : 无法安装应用"></a>No.2 : 无法安装应用</h2><p>如此费尽周折之后,你高兴的成功安装好了Genymotion,也下载好了各种机型的虚拟机,准备开心的写代码了,但这世界往往不会如想象的那么美好.</p>
 <p>因为你可能会这样:</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/174711-dea5a4e41f2a2a7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
 <p>还可能会这样:</p>
@@ -416,7 +416,7 @@ An ARM application running on Genymotion is less stable and efficient than an x8
 &gt;  sh /system/bin/flash-archive.sh /sdcard/Download/Genymotion-ARM-Translation_v1.1.zip
 </code></pre><p>最后,重启模拟器即可.至于adb是什么,adb怎么用,由于篇幅的限制,这里不会介绍.</p>
 <p>以下我使用Genymotion版本信息:<br><img src="http://upload-images.jianshu.io/upload_images/174711-6f6b02115b4dd4c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<p>##在Genymotion中输入中文<br>Genymotion默认是不支持输入中文的,有些情况下我必须要输入中文怎么办呢?这就有些蛋疼了.我尝试安装了很多款手机输入法,例如,搜狗输入法,百度输入法.触宝输入法,Google拼音输入法,QQ手机输入法,这些都是没什么卵用的,测试下来只有必应输入法是可以输入中文的.微软大法好!最后还要在设置里勾选上<code>硬件</code>-&gt;<code>显示输入法</code>,如下:</p>
+<h2 id="在Genymotion中输入中文"><a href="#在Genymotion中输入中文" class="headerlink" title="在Genymotion中输入中文"></a>在Genymotion中输入中文</h2><p>Genymotion默认是不支持输入中文的,有些情况下我必须要输入中文怎么办呢?这就有些蛋疼了.我尝试安装了很多款手机输入法,例如,搜狗输入法,百度输入法.触宝输入法,Google拼音输入法,QQ手机输入法,这些都是没什么卵用的,测试下来只有必应输入法是可以输入中文的.微软大法好!最后还要在设置里勾选上<code>硬件</code>-&gt;<code>显示输入法</code>,如下:</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/174711-77fd08ffdabb6763.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
 <p>最后的效果就是这样滴:</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/174711-75f6fc4882828960.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
@@ -505,8 +505,17 @@ An ARM application running on Genymotion is less stable and efficient than an x8
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://pic3.zhimg.com/v2-bffa98de38491ea799ffd9671fead286_is.jpg"
@@ -559,6 +568,22 @@ An ARM application running on Genymotion is less stable and efficient than an x8
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#No-1-无法下载Genymotion内的镜像"><span class="nav-number">1.</span> <span class="nav-text">No.1 : 无法下载Genymotion内的镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#No-2-无法安装应用"><span class="nav-number">2.</span> <span class="nav-text">No.2 : 无法安装应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在Genymotion中输入中文"><span class="nav-number">3.</span> <span class="nav-text">在Genymotion中输入中文</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
