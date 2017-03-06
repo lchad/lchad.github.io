@@ -89,16 +89,14 @@
 
 <meta name="description" content="最近换了一台华为P8的测试机，EMUI（4.0.1）真够丑，我的圆形Launcher图标也会被处理成圆角矩形。
 
-还有一个更严重的问题，我在代码里的Log.d和Log.w日志永远打不出来，程序崩溃之后的话，也看不到报错信息，只能靠打断点和瞎猜，目测浪费了我至少好几个小时的宝贵时间，NND。
-搜了一下，华为手机好像普遍都有这个问题，来，接锅吧，华为。华为的系统默认会把日志打印系统关闭掉， 打开的方式">
+还有一个更严重的问题，我在代码里的Log.d和Log.w日志永远打不出来，程序崩溃之后的话，也看不到报错信息，只能靠打断点和瞎猜，目测浪费了我至少好几个小时的宝贵时间，NND。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解决华为手机不输出log的问题">
 <meta property="og:url" content="http://yoursite.com/2016/11/20/Huawei-log/index.html">
 <meta property="og:site_name" content="lchad">
 <meta property="og:description" content="最近换了一台华为P8的测试机，EMUI（4.0.1）真够丑，我的圆形Launcher图标也会被处理成圆角矩形。
 
-还有一个更严重的问题，我在代码里的Log.d和Log.w日志永远打不出来，程序崩溃之后的话，也看不到报错信息，只能靠打断点和瞎猜，目测浪费了我至少好几个小时的宝贵时间，NND。
-搜了一下，华为手机好像普遍都有这个问题，来，接锅吧，华为。华为的系统默认会把日志打印系统关闭掉， 打开的方式">
+还有一个更严重的问题，我在代码里的Log.d和Log.w日志永远打不出来，程序崩溃之后的话，也看不到报错信息，只能靠打断点和瞎猜，目测浪费了我至少好几个小时的宝贵时间，NND。">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-10f909f95aa2ee18.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-2e762fed48fccbc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-afff4a89501584ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
@@ -106,13 +104,12 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-962d6081c368b3b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-d23fec9a646e096a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-be273e37e52b487e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
-<meta property="og:updated_time" content="2017-03-06T13:29:15.727Z">
+<meta property="og:updated_time" content="2017-03-06T13:56:58.747Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决华为手机不输出log的问题">
 <meta name="twitter:description" content="最近换了一台华为P8的测试机，EMUI（4.0.1）真够丑，我的圆形Launcher图标也会被处理成圆角矩形。
 
-还有一个更严重的问题，我在代码里的Log.d和Log.w日志永远打不出来，程序崩溃之后的话，也看不到报错信息，只能靠打断点和瞎猜，目测浪费了我至少好几个小时的宝贵时间，NND。
-搜了一下，华为手机好像普遍都有这个问题，来，接锅吧，华为。华为的系统默认会把日志打印系统关闭掉， 打开的方式">
+还有一个更严重的问题，我在代码里的Log.d和Log.w日志永远打不出来，程序崩溃之后的话，也看不到报错信息，只能靠打断点和瞎猜，目测浪费了我至少好几个小时的宝贵时间，NND。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/174711-10f909f95aa2ee18.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
 
 
@@ -362,8 +359,7 @@
       
         <p>最近换了一台华为P8的测试机，EMUI（4.0.1）真够丑，我的圆形Launcher图标也会被处理成圆角矩形。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/174711-10f909f95aa2ee18.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt="Paste_Image.png"></p>
-<p>还有一个更严重的问题，我在代码里的<code>Log.d</code>和<code>Log.w</code>日志永远打不出来，程序崩溃之后的话，也看不到报错信息，只能靠打断点和瞎猜，目测浪费了我至少好几个小时的宝贵时间，NND。</p>
-<p>搜了一下，华为手机好像普遍都有这个问题，来，接锅吧，华为。华为的系统默认会把日志打印系统关闭掉， 打开的方式是在拨号应用里输入<code>*#*#2846579#*#*</code>，进入隐藏的设置界面：</p>
+<p>还有一个更严重的问题，我在代码里的<code>Log.d</code>和<code>Log.w</code>日志永远打不出来，程序崩溃之后的话，也看不到报错信息，只能靠打断点和瞎猜，目测浪费了我至少好几个小时的宝贵时间，NND。<br><a id="more"></a><br>搜了一下，华为手机好像普遍都有这个问题，来，接锅吧，华为。华为的系统默认会把日志打印系统关闭掉， 打开的方式是在拨号应用里输入<code>*#*#2846579#*#*</code>，进入隐藏的设置界面：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/174711-2e762fed48fccbc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt="4075B264C613DB2822C44C69F83D692B.png"><br>点击<code>1.后台设置</code><br><img src="http://upload-images.jianshu.io/upload_images/174711-afff4a89501584ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt="CA802F8041A9DF3AC636E99A8C3E0F66.png"><br>点击<code>3.LOG设置</code></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/174711-f682b7b91dc3db13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt="E2EEF5A89ADF5F5531D51E415AD85382.png"></p>
 <p>把这些都勾选上。</p>

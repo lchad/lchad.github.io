@@ -95,7 +95,7 @@ http&amp;amp;&amp;amp;ssl:为了提高网络传输的安全性，一般会在比
 <meta property="og:site_name" content="lchad">
 <meta property="og:description" content="在阅读文章之前读者应该对一些重要概念有一个基本的认识:
 http&amp;amp;&amp;amp;ssl:为了提高网络传输的安全性，一般会在比较敏感的部分采用https传输，比        如注册、登录、控制台等。像Gmail、网银、icloud等则全部采用https传输。    https/ssl主要起到两个作用：认证、内容加密传输和数据一致性。经CA签发的证书才起到认证可信的作用，所有有效证书均可以起到加">
-<meta property="og:updated_time" content="2017-03-06T13:28:47.202Z">
+<meta property="og:updated_time" content="2017-03-06T13:57:45.506Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android上实现带自签名客户端证书的双向校验HTTPS连接">
 <meta name="twitter:description" content="在阅读文章之前读者应该对一些重要概念有一个基本的认识:
@@ -348,7 +348,7 @@ http&amp;amp;&amp;amp;ssl:为了提高网络传输的安全性，一般会在比
       
         <p>在阅读文章之前读者应该对一些重要概念有一个基本的认识:</p>
 <p><strong>http&amp;&amp;ssl:</strong><br>为了提高网络传输的安全性，一般会在比较敏感的部分采用https传输，比        如注册、登录、控制台等。像Gmail、网银、icloud等则全部采用https传输。    https/ssl主要起到两个作用：认证、内容加密传输和数据一致性。经CA签发的证书才起到认证可信的作用，所有有效证书均可以起到加密传输的作用。</p>
-<p><strong>数字证书:</strong><br>主要在互联网上的用于身份验证的用途。 安全站点在获得CA（Certificate Authority数字证书认证机构）认证后，获得一个数字证书，以此来标识其合法身份的真实性。数字证书主要分为服务器证书和客户端证书。服务器证书（SSL证书）用来进行身份验证和通信的加密，客户端证书主要用于身份验证和电子签名。找CA申请证书是要收费的。</p>
+<p><strong>数字证书:</strong><br>主要在互联网上的用于身份验证的用途。 安全站点在获得CA（Certificate Authority数字证书认证机构）认证后，获得一个数字证书，以此来标识其合法身份的真实性。数字证书主要分为服务器证书和客户端证书。服务器证书（SSL证书）用来进行身份验证和通信的加密，客户端证书主要用于身份验证和电子签名。找CA申请证书是要收费的。<br><a id="more"></a></p>
 <hr>
 <p>以下是正文</p>
 <p>许多Android应用都在使用RESTful或其他基于HTTP协议的模式来和服务器进行通信。</p>
