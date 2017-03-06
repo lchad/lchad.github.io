@@ -1,0 +1,692 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="##Beginning当我们构建网站或者开发App的时候，应当怎样选择使用图片的类型呢？是简单的全部使用一种类型还是根据业务情形选择不同的图片类型呢？每种类型的图片类型又有怎样的优点和缺点呢？
+##Concepts图片呈现效果的异同跟以下两个因素有关：
+首先，压缩分两派：无损压缩和有损压缩。
+
+无损压缩 ：能够使图片占用的存储空间变小，而且不会损害图片的质量。
+有损压缩：相对无损压缩会压缩的更狠一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PNG、JPEG、GIF、SVG应该用哪个？">
+<meta property="og:url" content="http://yoursite.com/2016/10/13/How-to-select-image-file-type-Android/index.html">
+<meta property="og:site_name" content="lchad">
+<meta property="og:description" content="##Beginning当我们构建网站或者开发App的时候，应当怎样选择使用图片的类型呢？是简单的全部使用一种类型还是根据业务情形选择不同的图片类型呢？每种类型的图片类型又有怎样的优点和缺点呢？
+##Concepts图片呈现效果的异同跟以下两个因素有关：
+首先，压缩分两派：无损压缩和有损压缩。
+
+无损压缩 ：能够使图片占用的存储空间变小，而且不会损害图片的质量。
+有损压缩：相对无损压缩会压缩的更狠一">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-a9016bf1f886252a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-b2a169cc588490f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-03-06T13:28:29.371Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PNG、JPEG、GIF、SVG应该用哪个？">
+<meta name="twitter:description" content="##Beginning当我们构建网站或者开发App的时候，应当怎样选择使用图片的类型呢？是简单的全部使用一种类型还是根据业务情形选择不同的图片类型呢？每种类型的图片类型又有怎样的优点和缺点呢？
+##Concepts图片呈现效果的异同跟以下两个因素有关：
+首先，压缩分两派：无损压缩和有损压缩。
+
+无损压缩 ：能够使图片占用的存储空间变小，而且不会损害图片的质量。
+有损压缩：相对无损压缩会压缩的更狠一">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/174711-a9016bf1f886252a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/10/13/How-to-select-image-file-type-Android/"/>
+
+
+
+
+
+  <title> PNG、JPEG、GIF、SVG应该用哪个？ | lchad </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">lchad</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/13/How-to-select-image-file-type-Android/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lchad">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lchad">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                PNG、JPEG、GIF、SVG应该用哪个？
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-13T21:49:00+08:00">
+                2016-10-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>##Beginning<br>当我们构建网站或者开发App的时候，应当怎样选择使用图片的类型呢？<br>是简单的全部使用一种类型还是根据业务情形选择不同的图片类型呢？<br>每种类型的图片类型又有怎样的优点和缺点呢？</p>
+<p>##Concepts<br>图片呈现效果的异同跟以下两个因素有关：</p>
+<p>首先，压缩分两派：<strong>无损压缩</strong>和<strong>有损压缩</strong>。</p>
+<ul>
+<li><strong>无损压缩</strong> ：能够使图片占用的存储空间变小，而且不会损害图片的质量。</li>
+<li><strong>有损压缩</strong>：相对<strong>无损压缩</strong>会压缩的更狠一点，但是不可避免的会对图片质量产生损害。如果有损压缩的次数多了的话，那么图片的质量也会越来越差。</li>
+</ul>
+<p>其次也有不同的色彩深度（色彩模式）：<strong>索引色彩</strong>和<strong>直接色彩</strong>。</p>
+<ul>
+<li><strong>索引色彩</strong> ：这个模式下图片仅可以存储有限数量的颜色种类（通常是2^8即256种）。</li>
+<li><strong>直接色彩</strong>：这个模式下你可以存储成千上万种颜色值，所以相对而言采用这种模式的图片会显得色彩更加丰富饱满和艳丽。</li>
+</ul>
+<p>接下来会通过这两个维度对常见的几种图片类型来进行分析和比较，总结它们的优缺点和适用场景。</p>
+<p>##BMP - 无损压缩、索引色彩模式、直接色彩模式<br>这是较早出现的一种图片格式。它是无损的但是压缩比例着实很低，BMP格式的图片通常会占用较大的存储空间。它拥有两种色彩模式，但是由于占用存储空间如此之大，几乎没有人会去使用这种格式。<br>擅长：真的没有，BMP格式真的没有任何优点，大家还是尽量不要用这种格式的图片。</p>
+<p>##GIF - 无损压缩、直接色彩模式<br>GIF使用了更好的无损压缩算法，所以你可以压缩图片的大小但是不会丢失任何数据，文件大小也比BMP小得多。但是只可以使用索引色彩模式。这意味着大多数情况下最多只可以有256种颜色显示在图片里。颜色种类貌似真的好少，确实。GIF图片可以动并且拥有透明度（<code>透明或不透明，并没有alpha通道</code>）。<br>擅长：logo，线条，或其他需要尺寸尽可能小的简单图像。</p>
+<p>##JPEG - 有损压缩、直接色彩模式<br>JPEG是一种偏向平衡性的格式，它会舍弃掉人眼根本无法感知的颜色信息，以使文件尽可能小并且细节不丢失。因此，它是一种有损格式。它颜色丰富并且很适合那些允许轻微失真的像素色彩丰富的图片（如相片）。但是有损压缩意味着不适合logo和线图，因为不仅看起来模糊还比GIF占用的文件大小大。<br>擅长：相片，渐变图像。</p>
+<p>##PNG-8 - 无损压缩、索引色彩模式<br>PNG是一种较新的格式，并且PNG-8（PNG的索引模式版本）是GIF格式很好的替代。可是也有一些缺点：首先不能像GIF一样能动，其次对一些老旧的浏览器（如IE6）会有不兼容的问题。<br>擅长：PNG-8相对于GIF来讲有对alpha透明通道的支持。</p>
+<p>##PNG-24 - 无损压缩、直接色彩模式<br>PNG-24对无损压缩和直接色彩模式结合的很好（就像JPEG一样色彩丰富），在这方面和BMP很相似，但是PNG的压缩比率远强过BMP，所以文件大小也更小。不幸的是PNG-24仍然会比JPEG，GIF，PNG-8占用更多的存储空间，所以如果你对文件大小很在意的话，还是要考虑是否要选择以上的一种。</p>
+<p>尽管PNG-24压缩比率较高而且还有丰富的色彩，但它不是为了来取代JPEG的，因为一个照片保存为PNG-24格式的话会比JPEG至少大5倍，但是图片显示质量却几乎没有提升。（如果你唯一考虑的因素就是图片质量的话，你还是可以使用这个格式的）<br>PNG-24和PNG-8一样也支持alpha透明通道。</p>
+<p>##SVG -无损压缩、矢量模式<br>SVG正变得越来越热门，它不同于以上所有的文件类型，因为它是一个矢量文件格式。这就是说它实际上是由线条和曲线，而不是像素组成的。当你放大一个矢量图像时，你仍然看到一条曲线或一条线。当你放大一个由像素构成的图像时，你会看到像素。<br>例如：<br><img src="http://upload-images.jianshu.io/upload_images/174711-a9016bf1f886252a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/174711-b2a169cc588490f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>这意味着，对于小logo和图标和来说，SVG是很理想的，因为无论是Retina屏幕或在其他低清晰度的屏幕上它的形状都是一样的。这也意味着一个小的SVG logo可以放大但不失真，如果是像素构成的图片格式的话就需要设计多套图片，可以参考Android中的xxxdpi。<br>SVG文件的大小通常是极小的，即使它们看起来的样子真的很大。然而，值得注意的是，SVG文件的大小也取决于要展示图形的复杂度。而且SVG在渲染的时候需要比像素图更多的计算能力，这也就意味着性能的损耗。如果你的logo是特别复杂的，它可能会很耗费性能，甚至文件大小也非常大。所以尽可能简化你的矢量形状的复杂度是很重要也很有必要的。<br>此外，SVG文件是用XML编写的，因此可以在文本编辑器中打开和编辑。这意味着它展示的效果在运行时是可以改变的。例如，你可以使用JavaScript来改变对一个网站的SVG图标的颜色。所以，对于简单的平面形状，像logo或图形，使用svg是坠好的。<br>另外Android现在对SVG的支持也算是比较成熟了，微信团队貌似现在所有的图片资源都替换成SVG了。</p>
+<p>##Summary<br>所以这么一个小小的问题也有这么多值得挖掘的知识点。作为一个合格的工程师，任何一个细节都不可以放过，因为<code>They just make it better</code>.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/14/Chord-Nonsense/" rel="next" title="Chord Nonsense">
+                <i class="fa fa-chevron-left"></i> Chord Nonsense
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/13/HTTPS-with-Client-Certificates-on-Android/" rel="prev" title="Android上实现带自签名客户端证书的双向校验HTTPS连接">
+                Android上实现带自签名客户端证书的双向校验HTTPS连接 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="lchad" />
+          <p class="site-author-name" itemprop="name">lchad</p>
+           
+              <p class="site-description motion-element" itemprop="description">Android Developer</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lchad</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
