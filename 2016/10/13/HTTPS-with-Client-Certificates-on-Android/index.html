@@ -95,7 +95,7 @@ http&amp;amp;&amp;amp;ssl:为了提高网络传输的安全性，一般会在比
 <meta property="og:site_name" content="lchad">
 <meta property="og:description" content="在阅读文章之前读者应该对一些重要概念有一个基本的认识:
 http&amp;amp;&amp;amp;ssl:为了提高网络传输的安全性，一般会在比较敏感的部分采用https传输，比        如注册、登录、控制台等。像Gmail、网银、icloud等则全部采用https传输。    https/ssl主要起到两个作用：认证、内容加密传输和数据一致性。经CA签发的证书才起到认证可信的作用，所有有效证书均可以起到加">
-<meta property="og:updated_time" content="2017-03-06T13:57:45.506Z">
+<meta property="og:updated_time" content="2017-03-06T14:01:45.173Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android上实现带自签名客户端证书的双向校验HTTPS连接">
 <meta name="twitter:description" content="在阅读文章之前读者应该对一些重要概念有一个基本的认识:
@@ -357,8 +357,7 @@ http&amp;amp;&amp;amp;ssl:为了提高网络传输的安全性，一般会在比
 <p>如果你想直接看代码的话,可以来这里获取<a href="https://github.com/rfreedman/android-ssl" target="_blank" rel="external">Github</a>。当然你需要搭建自己的HTTPS服务器并且生成客户端证书.其中一种方式就是使用<a href="http://httpd.apache.org/docs/2.2/mod/mod_ssl.html" target="_blank" rel="external">Apache mod_ssl module</a>。</p>
 <p>在Android上使用HTTP或HTTPS之前,要确保你的应用有访问网络的权限,正确姿势如下(在AndroidManifest.xml文件中添加):</p>
 <pre><code>&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
-</code></pre><p>###挑战1:使用客户端证书</p>
-<p>我们的客户端证书是<a href="http://en.wikipedia.org/wiki/PKCS_12" target="_blank" rel="external">PKCS 12</a>格式的,文件扩展名为.p12。</p>
+</code></pre><h3 id="挑战1-使用客户端证书"><a href="#挑战1-使用客户端证书" class="headerlink" title="挑战1:使用客户端证书"></a>挑战1:使用客户端证书</h3><p>我们的客户端证书是<a href="http://en.wikipedia.org/wiki/PKCS_12" target="_blank" rel="external">PKCS 12</a>格式的,文件扩展名为.p12。</p>
 <p>为了让我们的应用能够拿到证书,我们使用DDMS工具来把证书文件复制到设备SD卡的根目录下,如果你在使用一台虚拟机的话,也同样可以把证书复制到SD卡根目录下.你也可以通过USB的方式从电脑把证书文件复制到设备SD卡根目录下。</p>
 <p>在我们的最终版应用中,我们会把证书复制到应用特有的存储空间中(应该是<strong>/Android/data/package name</strong>这个目录下),之后把SD卡根目录下的原始证书删除掉。</p>
 <p>使用客户端证书的关键之处是创建一个包含证书的<a href="http://developer.android.com/intl/zh-cn/reference/java/security/KeyStore.html" target="_blank" rel="external">KeyStore</a>,然后使用这个KeyStore创建一个自定义的<a href="https://docs.oracle.com/javase/7/docs/api/javax/net/ssl/SSLContext.html" target="_blank" rel="external">SSLContext</a>。</p>
@@ -530,8 +529,17 @@ sslContext.init(keyManagers, trustManagers,null);
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://pic3.zhimg.com/v2-bffa98de38491ea799ffd9671fead286_is.jpg"
@@ -584,6 +592,22 @@ sslContext.init(keyManagers, trustManagers,null);
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#挑战1-使用客户端证书"><span class="nav-number">1.</span> <span class="nav-text">挑战1:使用客户端证书</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
