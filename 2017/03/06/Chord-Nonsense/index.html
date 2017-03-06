@@ -1,0 +1,736 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="自然音阶 :1 2 3 4 5 6 7C D E F G A Bdo re mi fa sol la si
+设震动频率f = 440Hz为基准音.纯八度:(f, 2f)即(440Hz, 880Hz)为一个纯八度.至于为什么1:2的跨度才能构成一个纯八度,就是物理和数学的奇妙了,宝宝不懂.
+公式 : 1 × 全音 = 2 × 半音
+十二平均律/十二等程律(纯八度 ➗ 12 = 12个半音 = 6个全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chord Nonsense   //在此处添加你的标题。">
+<meta property="og:url" content="http://yoursite.com/2017/03/06/Chord-Nonsense/index.html">
+<meta property="og:site_name" content="lchad">
+<meta property="og:description" content="自然音阶 :1 2 3 4 5 6 7C D E F G A Bdo re mi fa sol la si
+设震动频率f = 440Hz为基准音.纯八度:(f, 2f)即(440Hz, 880Hz)为一个纯八度.至于为什么1:2的跨度才能构成一个纯八度,就是物理和数学的奇妙了,宝宝不懂.
+公式 : 1 × 全音 = 2 × 半音
+十二平均律/十二等程律(纯八度 ➗ 12 = 12个半音 = 6个全">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-9bb82cdf741e9e60.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-a83db3ba1cce0ce3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-db2f85885c21cdd5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-9ae564d5aa772852.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-dbdd167e76bfb325.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-15229cdfdda1fc50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-ecadb3a1f88055b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-983be07436c90161.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-fc78d7e033eec7b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-e7510515b3db1f92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-2e1d9b1b6c76b01e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-6840207534228795.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-bf6a7180e11dfa82.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-1bf2bbee02eebbc2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-ef3a9f04758b268f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-75a5647b5ca8443a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-2b021b844c51d957.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-8e0fa698ab538f7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-b705d90cdcb0a64f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-7eaf82d909ca5c77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-e78eecc558f32644.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-bef39c6aff80ff22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-03-06T13:16:44.089Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chord Nonsense   //在此处添加你的标题。">
+<meta name="twitter:description" content="自然音阶 :1 2 3 4 5 6 7C D E F G A Bdo re mi fa sol la si
+设震动频率f = 440Hz为基准音.纯八度:(f, 2f)即(440Hz, 880Hz)为一个纯八度.至于为什么1:2的跨度才能构成一个纯八度,就是物理和数学的奇妙了,宝宝不懂.
+公式 : 1 × 全音 = 2 × 半音
+十二平均律/十二等程律(纯八度 ➗ 12 = 12个半音 = 6个全">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/174711-9bb82cdf741e9e60.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/06/Chord-Nonsense/"/>
+
+
+
+
+
+  <title> Chord Nonsense   //在此处添加你的标题。 | lchad </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">lchad</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/06/Chord-Nonsense/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lchad">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lchad">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Chord Nonsense   //在此处添加你的标题。
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-06T21:15:29+08:00">
+                2017-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Music-在此处输入这篇文章的分类。/" itemprop="url" rel="index">
+                    <span itemprop="name">Music   //在此处输入这篇文章的分类。</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>自然音阶</strong> :<br>1 2 3 4 5 6 7<br>C D E F G A B<br>do re mi fa sol la si</p>
+<p>设震动频率<code>f = 440Hz</code>为基准音.<br><code>纯八度</code>:(f, 2f)即(440Hz, 880Hz)为一个纯八度.<br>至于为什么<code>1:2</code>的跨度才能构成一个纯八度,就是物理和数学的奇妙了,宝宝不懂.</p>
+<p><strong>公式</strong> : 1 × <code>全音</code> = 2 × <code>半音</code></p>
+<p><strong>十二平均律/十二等程律</strong>(<code>纯八度</code> <code>➗</code> 12 = 12个<code>半音</code> = 6个<code>全音</code>)<br>把一个<code>纯八度(f, 2f)</code>分为12份,会得到11个不同的单音(f和2f除外),每两个相邻的单音之间的音程是一个<code>半音</code>,它们的频率分别是:<br><img src="http://upload-images.jianshu.io/upload_images/174711-9bb82cdf741e9e60.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>每两个相邻的单音之间是等比关系，比例是<code>12√2</code>(2开十二次方)</p>
+<p>#####极其重要▶️音程关系表:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/174711-a83db3ba1cce0ce3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>各音阶之间的音程关系:<br>C    全  D  全   E   半  F   全   G   全   A  全   B  半<br><strong>图示</strong>(根音后加<code>b</code>表示降音,根音后加<code>#</code>表示升音,升降都是以一个半音为单位):</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/174711-db2f85885c21cdd5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p><strong>调式</strong>(diao shi,不要念成Debug):在一个音阶中,音与音的排列模式.</p>
+<p><strong>大调</strong> 主音为<code>do</code>;<br>音阶排列为：do 全 re 全 mi 半 fa 全 sol 全 la 全 si 半 do;<br><strong>图示</strong>:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/174711-9ae564d5aa772852.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>一级、三级、五级可构成大三和弦do mi sol;（如果看不懂和弦，就先看后面关于三和弦的解释再来思考）<br>调式基本特征：根音上方三度为大三度。</p>
+<p><strong>小调</strong> 主音为la;<br>音阶排列为：la 全 si 半 do 全 re 全 mi 半 fa 全 sol 全 la;<br>就是在大调的基础上把3,6,7音都降半音.<br>一级、三级、五级可构成小三和弦la do mi;<br>调式基本特征：根音上方三度为小三度。</p>
+<p>吉他C大调<strong>低把位</strong>音阶分布(要牢记):</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/174711-dbdd167e76bfb325.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>###三大和弦家族:<br><code>大和弦 (major)</code> :<br>音阶分布 : 1 3 5 7 9 11<br><code>小和弦 (minor)</code> :<br>音阶分布 : 1 b3 5 b7 9 11<br><code>属和弦 (dominant)</code>:<br>音阶分布 : 1 3 5 b7 9 11</p>
+<p>####三和弦(triad):<br>由三个音构成的和弦.</p>
+<p>既然三个音构成的和弦叫做<code>三和弦</code>,那么四个音构成的和弦是不是叫做<code>四和弦</code>呢?答案是否定的.四个音构成的和弦叫做<code>七和弦(seventh chord)</code>,seventh chord的意思是跨度为7度的和弦,但是被中国人直接翻译成为了<code>七和弦</code>,而<code>三和弦</code>作为一个跨5度的和弦却没有被翻译成<code>五和弦</code>,所以造成概念上有一些混乱,很容易混淆它们的概念,绝对是翻译的锅.比较明了的理解方式如下:<br><code>三和弦</code> : <strong>三(个音的)和弦</strong>(但是跨度为5度)<br><code>七和弦</code> : <strong>七(度音的)和弦</strong>(由4个音构成)<br><code>九和弦</code> : <strong>九(度音的)和弦</strong>(由5个音构成)<br><code>十一和弦</code> : <strong>十一(度音的)和弦</strong>(由6个音构成)<br><code>十三和弦</code> : <strong>十三(度音的)和弦</strong>(由7个音构成)<br><code>十五和弦</code> : <strong>并不存在</strong>.</p>
+<p><code>三和弦</code>是流行音乐中最常用到的和弦种类,所以掌握三和弦的原理是很重要也是必要的.如果能够很好的掌握三和弦,那么其他的和弦自然也能够举一反三了.</p>
+<p><strong>关于三和弦很重要的公式:</strong><code>纯五度</code> = <code>大三度</code> + <code>小三度</code> = <code>小三度</code> + <code>大三度</code> = 3.5 * <code>音数</code>.</p>
+<p><strong>大三和弦</strong>:<br>是三和弦的一种.<code>根音</code>与<code>三音</code>之间的音程是<code>大三度</code>,<code>三音</code>与<code>五音</code>之间的音程是<code>小三度</code>.所以大三和弦是<code>大三度</code>+<code>小三度</code>构成的(大三在前,小三在后).大三和弦的表示符号就是根音的字母大写如,C.</p>
+<p><strong>和弦推算举例</strong>:<br><strong>C和弦</strong> : C调中的I级主和弦.指法如下图.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/174711-15229cdfdda1fc50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : C  do<br>三音 : E  mi<br>五音 : G  sol</p>
+<p><strong>很重要!!!</strong>▶️吉他C调标准调弦从6弦到1弦的空弦音分别是:mi la re sol si mi.<br><strong>很重要!!!</strong>▶️吉他上每一个品格是半个音的跨度.<br><strong>很重要!!!</strong>▶️上图最左边的第六弦上有一个叉叉,说明6弦是不弹的.<br><strong>很重要!!!</strong>▶️上图1弦和3弦上的空心圆代表空弦音.<br><strong>很重要!!!</strong>▶️以上三个黑点代表手指要按住的位置.</p>
+<p>推算和弦的目的就是在每一根弦上找到一种按法,这样的话每根弦上的音就变成了此和弦的组成音之一,如果你学会了推算和弦的方法之后,无论任意一个和弦,只要你知道了它的根音,就能很快知道应该怎样在吉他上按这个和弦.下面我们以C和弦为例,介绍一下上图的三个黑点是如何推算出来的.</p>
+<p><strong><em>5弦</em></strong> : 吉他5弦的空弦音是<code>la</code>,那么接下来要考虑的问题就是C和弦的组成音<code>do</code>, <code>mi</code> ,<code>sol</code>中,与la靠的最近的是哪一个呢?答案是do.有的同学就会问了,明明是<code>sol</code>与<code>la</code>最近啊,它就在<code>la</code>的前面,紧挨着啊,这样想是完全正确的,说明你看的很仔细.现在解释一下为什么没有选择<code>la</code>前面的低音<code>sol</code>?我们知道5弦的空弦音已经是<code>la</code>了,如果还要往前推到更低的音sol的话,你会发现这是不可能的,为什么呢?因为5弦的最低音就是空弦音<code>la</code>了,没有比它更低的音存在这个弦上了,所以只好退而求其次选择高音<code>do</code>.接下来计算一下从<code>la</code>到<code>do</code>需要跨几个品格.根据<code>十二平均律</code>,C大调中<code>la</code>到<code>si</code>之间是一个全音,<code>si</code>到<code>do</code>之间是一个半音.一个全音和一个半音就是三个半音,也就是吉他上的三个品,所以5弦上手指就要按到三品上.</p>
+<p><strong><em>4弦</em></strong> : 同理,吉他4弦的空弦音是<code>re</code>,C和弦的组成音<code>do</code>, <code>mi</code> ,<code>sol</code>中,与<code>re</code>音程最近的是…好像是<code>mi</code>诶,根据<code>十二平均律</code>可知<code>re</code>到<code>mi</code>之间相隔一个全音,对应着吉他上的两个品格,所以我们要把手指按在4弦的2品上.</p>
+<p><strong><em>3弦</em></strong> : 吉他3弦的空弦音是<code>sol</code>,直接就是C和弦的组成音,所以3弦保持空弦即可,不用按.</p>
+<p><strong><em>2弦</em></strong> : 吉他2弦的空弦音是<code>si</code>,C和弦的组成音<code>do</code>, <code>mi</code> ,<code>sol</code>中,与<code>si</code>音程最近的是<code>do</code>,根据<code>十二平均律</code>可知<code>si</code>到<code>do</code>之间相隔一个半音,对应着吉他上的一个品格,所以我们要把手指按在2弦的1品上.</p>
+<p><strong><em>1弦</em></strong> : 吉他1弦的空弦音是<code>mi</code>,也是C和弦的组成音,所以1弦保持空弦即可,不用按.</p>
+<p>所以按住C和弦从上到下5弦到1弦依次弹响,发出的音高如下:<br><code>5-&gt;1</code>:do mi sol do mi</p>
+<p><strong>D和弦</strong><br>是D大调中的I级主和弦,指法如下.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/174711-ecadb3a1f88055b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : D  re<br>三音 : F# 升fa<br>五音 : A  la</p>
+<p><strong><em>4弦</em></strong> : D和弦的组成音是 <code>re</code>, <code>F#</code>, <code>la</code>,吉他4弦的空弦音是<code>re</code>也是D和弦的组成音,所以4弦保持空弦即可,不用按.</p>
+<p><strong><em>3弦</em></strong> : D和弦的组成音是 <code>re</code>, <code>F#``la</code>,吉他3弦的空弦音是<code>sol</code>,与<code>sol</code>音程最近的是<code>la</code>诶,根据<code>十二平均律</code>可知<code>sol</code>到<code>la</code>之间相隔一个全音,对应着吉他上的两个品格,所以我们要把手指按在3弦的2品上.<br><strong><em>2弦</em></strong> : D和弦的组成音是 <code>re</code>, <code>F#``la</code>,吉他2弦的空弦音是<code>si</code>,与<code>si</code>音程最近的是<code>re</code>,根据<code>十二平均律</code>可知<code>si</code>到<code>re</code>之间相隔一个高音<code>do</code>,<code>si</code>和<code>do</code>之间相隔一个半音,<code>do</code>和<code>re</code>之间相隔一个全音,加起来是三个半音,对应着吉他上的三个品格,所以我们要把手指按在3弦的2品上.<br><strong><em>1弦</em></strong> : D和弦的组成音是 <code>re</code>, <code>F#``la</code>,吉他1弦的空弦音是<code>mi</code>与<code>mi</code>音程最近的是<code>F#</code>,根据<code>十二平均律</code>可知<code>mi</code>到<code>F</code>之间相隔一个半音,但是要达到小三度的音程关系还需要一个半音,所以就取到<code>F#</code>,加起来是两个半音,对应着吉他上的两个品格,所以我们要把手指按在1弦的2品上.<br>所以按住D和弦从上到下4弦到1弦依次弹响,发出的音高如下:<br><code>4-&gt;1</code>: re la re 升fa</p>
+<p>▶️之后的推算都是一个原理,只要对十二平均律足够熟悉的话,推出来结果是完全没问题的,所以之后的和弦不再展示推算过程,仅给出结果.</p>
+<p><strong>E和弦</strong><br>是E大调中的I级主和弦,指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-983be07436c90161.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : E mi<br>三音 : G# 升sol<br>五音 : B si<br><code>6-&gt;1</code>:mi si mi 升sol si mi</p>
+<p><strong>F和弦</strong><br>是F大调中的I级主和弦,指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-fc78d7e033eec7b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : F fa<br>三音 : A la<br>五音 : C do<br><code>6-&gt;1</code>:fa do fa la do fa</p>
+<p><strong>G和弦</strong><br>是G大调中的I级主和弦,指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-e7510515b3db1f92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : G sol<br>三音 : B si<br>五音 : D re<br>6-&gt;1:sol si re sol si sol</p>
+<p><strong>A和弦</strong><br>是A大调中的I级主和弦,指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-2e1d9b1b6c76b01e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : A  la<br>五音 : C# 升do<br>三音 : E  mi<br><code>5-&gt;1</code>:la mi la 升do mi</p>
+<p><strong>B和弦</strong><br>是B大调中的I级主和弦,指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-6840207534228795.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : B si<br>三音 : D# 升re<br>五音 : F# 升fa<br><code>5-&gt;1</code>:si #fa si #re #fa</p>
+<p>###小三和弦:<br>是三和弦的一种,跨度为5度.<code>根音</code>与<code>三音</code>之间是<code>小三度</code>,<code>三音</code>与<code>五音</code>之间是<code>大三度</code>.<br>所以小三和弦是由<code>小三度</code>+<code>大三度</code>构成的.<br><strong>和弦推算举例</strong>:<br><strong>Am和弦</strong><br>是C大调中的VI级和弦,指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-bf6a7180e11dfa82.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : A  la<br>三音 : C  do<br>五音 : E  mi<br><code>5-&gt;1</code>:la mi la do mi</p>
+<p><strong>Bm和弦</strong><br>是C大调中的VII级和弦,指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-1bf2bbee02eebbc2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : B si<br>三音 : D re<br>五音 : F# 升fa<br><code>5-&gt;1</code>:si 升fa si re 升fa</p>
+<p><strong>Dm和弦</strong><br>是C大调中的II级和弦,指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-ef3a9f04758b268f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : D re<br>三音 : F fa<br>五音 : A la<br>4-&gt;1:re la re fa</p>
+<p><strong>Em和弦</strong><br>是C大调中的III级和弦,指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-75a5647b5ca8443a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : E mi<br>三音 : G sol<br>五音 : B si<br>6-&gt;1:mi si mi sol si mi</p>
+<p>####属七和弦（dominant seventh chord）<br>又可称：<strong>大小七和弦(major minor seventh chord)</strong><br>是由根音，大三度，纯五度，和小七度这<code>四个音</code>构成的和弦。<br>是在大三和弦的基础上再增加小三度.</p>
+<p><strong>G7和弦</strong><br>指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-2b021b844c51d957.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>是C大调中的V级属七和弦,指法如下.<br> <code>组成音</code>:<br>根音 : G sol<br>三音 : B si<br>五音 : D re<br>七音 : F fa<br><code>6-&gt;1</code>:sol si re sol si fa</p>
+<p>####大大七和弦<br>可简称为<strong>大七和弦</strong><br>是由根音,大三度,纯五度,大七度这四个音构成的和弦<br>是在大三和弦基础上再增加大三度.</p>
+<p><strong>Gmaj7/GM7/Δ7和弦</strong><br>指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-8e0fa698ab538f7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : G<br>三音 : B<br>五音 : D<br>七音 : F#<br><code>6-&gt;1</code>: sol si re sol si 升fa</p>
+<p>####小小七和弦<br>可简称为<strong>小七和弦</strong><br>由根音,小三度,纯五度,小七度这四个音构成的和弦.<br>在小三和弦基础上再增加小三度.<br><strong>Dm7和弦</strong><br>指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-b705d90cdcb0a64f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : D re<br>三音 : F fa<br>五音 : A la<br>七音 : C do<br><code>4-&gt;1</code>:re la do fa</p>
+<p>####小大七和弦<br>是由根音,小三度,纯五度,大七度这四个音构成的和弦.<br>在小三和弦基础上再增加大三度.<br><strong>AmM7/aM7和弦</strong><br>指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-7eaf82d909ca5c77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : A la<br>三音 : C do<br>五音 : D mi<br>七音 : G# 升sol<br><code>5-&gt;1</code>:la mi 升sol do mi</p>
+<p>####加音和弦</p>
+<p><strong>Cadd6/C6和弦</strong><br>就是在C和弦基础上加了六度音A（6）<br>指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-e78eecc558f32644.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : C do<br>三音 : E mi<br>五音 : G sol<br>六音 : A la<br><code>5-&gt;1</code>:do mi la do mi</p>
+<p><strong>Csus4和弦</strong><br>就是在C和弦基础上加了四度音fa（4）<br>通常三度音会被省略,可以读成C挂4和弦.<br>指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-bef39c6aff80ff22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : C do<br>四音 : F fa<br>五音 : G sol<br><code>5-&gt;1</code>:do fa sol do fa</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/06/HTTPS-with-Client-Certificates-on-Android/" rel="next" title="Android上实现带自签名客户端证书的双向校验HTTPS连接   //在此处添加你的标题。">
+                <i class="fa fa-chevron-left"></i> Android上实现带自签名客户端证书的双向校验HTTPS连接   //在此处添加你的标题。
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/06/How-to-select-image-file-type-Android/" rel="prev" title="PNG、JPEG、GIF、SVG应该用哪个？   //在此处添加你的标题。">
+                PNG、JPEG、GIF、SVG应该用哪个？   //在此处添加你的标题。 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="lchad" />
+          <p class="site-author-name" itemprop="name">lchad</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lchad</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

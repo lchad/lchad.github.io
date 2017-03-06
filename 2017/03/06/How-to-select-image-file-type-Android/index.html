@@ -87,33 +87,34 @@
 
 
 
-<meta name="description" content="最近换了一台华为P8的测试机，EMUI（4.0.1）真够丑，我的圆形Launcher图标也会被处理成圆角矩形。
+<meta name="description" content="##Beginning当我们构建网站或者开发App的时候，应当怎样选择使用图片的类型呢？是简单的全部使用一种类型还是根据业务情形选择不同的图片类型呢？每种类型的图片类型又有怎样的优点和缺点呢？
+##Concepts图片呈现效果的异同跟以下两个因素有关：
+首先，压缩分两派：无损压缩和有损压缩。
 
-还有一个更严重的问题，我在代码里的Log.d和Log.w日志永远打不出来，程序崩溃之后的话，也看不到报错信息，只能靠打断点和瞎猜，目测浪费了我至少好几个小时的宝贵时间，NND。
-搜了一下，华为手机好像普遍都有这个问题，来，接锅吧，华为。华为的系统默认会把日志打印系统关闭掉， 打开的方式">
+无损压缩 ：能够使图片占用的存储空间变小，而且不会损害图片的质量。
+有损压缩：相对无损压缩会压缩的更狠一">
 <meta property="og:type" content="article">
-<meta property="og:title" content="解决华为手机不输出log的问题   //在此处添加你的标题。">
-<meta property="og:url" content="http://yoursite.com/2017/03/06/Huawei-log/index.html">
+<meta property="og:title" content="PNG、JPEG、GIF、SVG应该用哪个？   //在此处添加你的标题。">
+<meta property="og:url" content="http://yoursite.com/2017/03/06/How-to-select-image-file-type-Android/index.html">
 <meta property="og:site_name" content="lchad">
-<meta property="og:description" content="最近换了一台华为P8的测试机，EMUI（4.0.1）真够丑，我的圆形Launcher图标也会被处理成圆角矩形。
+<meta property="og:description" content="##Beginning当我们构建网站或者开发App的时候，应当怎样选择使用图片的类型呢？是简单的全部使用一种类型还是根据业务情形选择不同的图片类型呢？每种类型的图片类型又有怎样的优点和缺点呢？
+##Concepts图片呈现效果的异同跟以下两个因素有关：
+首先，压缩分两派：无损压缩和有损压缩。
 
-还有一个更严重的问题，我在代码里的Log.d和Log.w日志永远打不出来，程序崩溃之后的话，也看不到报错信息，只能靠打断点和瞎猜，目测浪费了我至少好几个小时的宝贵时间，NND。
-搜了一下，华为手机好像普遍都有这个问题，来，接锅吧，华为。华为的系统默认会把日志打印系统关闭掉， 打开的方式">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-10f909f95aa2ee18.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-2e762fed48fccbc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-afff4a89501584ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-f682b7b91dc3db13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-962d6081c368b3b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-d23fec9a646e096a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-be273e37e52b487e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
-<meta property="og:updated_time" content="2017-03-06T13:09:07.931Z">
+无损压缩 ：能够使图片占用的存储空间变小，而且不会损害图片的质量。
+有损压缩：相对无损压缩会压缩的更狠一">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-a9016bf1f886252a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/174711-b2a169cc588490f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-03-06T13:18:41.009Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="解决华为手机不输出log的问题   //在此处添加你的标题。">
-<meta name="twitter:description" content="最近换了一台华为P8的测试机，EMUI（4.0.1）真够丑，我的圆形Launcher图标也会被处理成圆角矩形。
+<meta name="twitter:title" content="PNG、JPEG、GIF、SVG应该用哪个？   //在此处添加你的标题。">
+<meta name="twitter:description" content="##Beginning当我们构建网站或者开发App的时候，应当怎样选择使用图片的类型呢？是简单的全部使用一种类型还是根据业务情形选择不同的图片类型呢？每种类型的图片类型又有怎样的优点和缺点呢？
+##Concepts图片呈现效果的异同跟以下两个因素有关：
+首先，压缩分两派：无损压缩和有损压缩。
 
-还有一个更严重的问题，我在代码里的Log.d和Log.w日志永远打不出来，程序崩溃之后的话，也看不到报错信息，只能靠打断点和瞎猜，目测浪费了我至少好几个小时的宝贵时间，NND。
-搜了一下，华为手机好像普遍都有这个问题，来，接锅吧，华为。华为的系统默认会把日志打印系统关闭掉， 打开的方式">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/174711-10f909f95aa2ee18.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
+无损压缩 ：能够使图片占用的存储空间变小，而且不会损害图片的质量。
+有损压缩：相对无损压缩会压缩的更狠一">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/174711-a9016bf1f886252a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -141,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/06/Huawei-log/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/06/How-to-select-image-file-type-Android/"/>
 
 
 
 
 
-  <title> 解决华为手机不输出log的问题   //在此处添加你的标题。 | lchad </title>
+  <title> PNG、JPEG、GIF、SVG应该用哪个？   //在此处添加你的标题。 | lchad </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -266,7 +267,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/06/Huawei-log/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/06/How-to-select-image-file-type-Android/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lchad">
@@ -287,7 +288,7 @@
             
             
               
-                解决华为手机不输出log的问题   //在此处添加你的标题。
+                PNG、JPEG、GIF、SVG应该用哪个？   //在此处添加你的标题。
               
             
           </h1>
@@ -302,7 +303,7 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-06T21:06:06+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-06T21:17:14+08:00">
                 2017-03-06
               </time>
             
@@ -360,18 +361,28 @@
       
 
       
-        <p>最近换了一台华为P8的测试机，EMUI（4.0.1）真够丑，我的圆形Launcher图标也会被处理成圆角矩形。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/174711-10f909f95aa2ee18.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt="Paste_Image.png"></p>
-<p>还有一个更严重的问题，我在代码里的<code>Log.d</code>和<code>Log.w</code>日志永远打不出来，程序崩溃之后的话，也看不到报错信息，只能靠打断点和瞎猜，目测浪费了我至少好几个小时的宝贵时间，NND。</p>
-<p>搜了一下，华为手机好像普遍都有这个问题，来，接锅吧，华为。华为的系统默认会把日志打印系统关闭掉， 打开的方式是在拨号应用里输入<code>*#*#2846579#*#*</code>，进入隐藏的设置界面：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/174711-2e762fed48fccbc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt="4075B264C613DB2822C44C69F83D692B.png"><br>点击<code>1.后台设置</code><br><img src="http://upload-images.jianshu.io/upload_images/174711-afff4a89501584ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt="CA802F8041A9DF3AC636E99A8C3E0F66.png"><br>点击<code>3.LOG设置</code></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/174711-f682b7b91dc3db13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt="E2EEF5A89ADF5F5531D51E415AD85382.png"></p>
-<p>把这些都勾选上。</p>
-<p>接下来，做一个测试，我在Android Studio工程的onCreate()里插入一行代码：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/174711-962d6081c368b3b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<p>运行之后，程序崩溃，在logcat下面可以看到如下：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/174711-d23fec9a646e096a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>log系统终于恢复正常了。</p>
-<p>另外之前还遇到过，华为手机打开开发开发者Android Studio不显示的问题，原因是Android驱动在Windows上没有安装成功，我之前的解决方法是安装豌豆荚，之后豌豆荚会自动下载对应的驱动。其实这个问题还有更简单的解决方法。答案还是在这个隐藏界面里。把下面的USB端口设置切换成Google模式的话，问题就迎刃而解了。<br><img src="http://upload-images.jianshu.io/upload_images/174711-be273e37e52b487e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt="1CE3D6BB4840541EF4E3B4E8342B6C2D.png"></p>
+        <p>##Beginning<br>当我们构建网站或者开发App的时候，应当怎样选择使用图片的类型呢？<br>是简单的全部使用一种类型还是根据业务情形选择不同的图片类型呢？<br>每种类型的图片类型又有怎样的优点和缺点呢？</p>
+<p>##Concepts<br>图片呈现效果的异同跟以下两个因素有关：</p>
+<p>首先，压缩分两派：<strong>无损压缩</strong>和<strong>有损压缩</strong>。</p>
+<ul>
+<li><strong>无损压缩</strong> ：能够使图片占用的存储空间变小，而且不会损害图片的质量。</li>
+<li><strong>有损压缩</strong>：相对<strong>无损压缩</strong>会压缩的更狠一点，但是不可避免的会对图片质量产生损害。如果有损压缩的次数多了的话，那么图片的质量也会越来越差。</li>
+</ul>
+<p>其次也有不同的色彩深度（色彩模式）：<strong>索引色彩</strong>和<strong>直接色彩</strong>。</p>
+<ul>
+<li><strong>索引色彩</strong> ：这个模式下图片仅可以存储有限数量的颜色种类（通常是2^8即256种）。</li>
+<li><strong>直接色彩</strong>：这个模式下你可以存储成千上万种颜色值，所以相对而言采用这种模式的图片会显得色彩更加丰富饱满和艳丽。</li>
+</ul>
+<p>接下来会通过这两个维度对常见的几种图片类型来进行分析和比较，总结它们的优缺点和适用场景。</p>
+<p>##BMP - 无损压缩、索引色彩模式、直接色彩模式<br>这是较早出现的一种图片格式。它是无损的但是压缩比例着实很低，BMP格式的图片通常会占用较大的存储空间。它拥有两种色彩模式，但是由于占用存储空间如此之大，几乎没有人会去使用这种格式。<br>擅长：真的没有，BMP格式真的没有任何优点，大家还是尽量不要用这种格式的图片。</p>
+<p>##GIF - 无损压缩、直接色彩模式<br>GIF使用了更好的无损压缩算法，所以你可以压缩图片的大小但是不会丢失任何数据，文件大小也比BMP小得多。但是只可以使用索引色彩模式。这意味着大多数情况下最多只可以有256种颜色显示在图片里。颜色种类貌似真的好少，确实。GIF图片可以动并且拥有透明度（<code>透明或不透明，并没有alpha通道</code>）。<br>擅长：logo，线条，或其他需要尺寸尽可能小的简单图像。</p>
+<p>##JPEG - 有损压缩、直接色彩模式<br>JPEG是一种偏向平衡性的格式，它会舍弃掉人眼根本无法感知的颜色信息，以使文件尽可能小并且细节不丢失。因此，它是一种有损格式。它颜色丰富并且很适合那些允许轻微失真的像素色彩丰富的图片（如相片）。但是有损压缩意味着不适合logo和线图，因为不仅看起来模糊还比GIF占用的文件大小大。<br>擅长：相片，渐变图像。</p>
+<p>##PNG-8 - 无损压缩、索引色彩模式<br>PNG是一种较新的格式，并且PNG-8（PNG的索引模式版本）是GIF格式很好的替代。可是也有一些缺点：首先不能像GIF一样能动，其次对一些老旧的浏览器（如IE6）会有不兼容的问题。<br>擅长：PNG-8相对于GIF来讲有对alpha透明通道的支持。</p>
+<p>##PNG-24 - 无损压缩、直接色彩模式<br>PNG-24对无损压缩和直接色彩模式结合的很好（就像JPEG一样色彩丰富），在这方面和BMP很相似，但是PNG的压缩比率远强过BMP，所以文件大小也更小。不幸的是PNG-24仍然会比JPEG，GIF，PNG-8占用更多的存储空间，所以如果你对文件大小很在意的话，还是要考虑是否要选择以上的一种。</p>
+<p>尽管PNG-24压缩比率较高而且还有丰富的色彩，但它不是为了来取代JPEG的，因为一个照片保存为PNG-24格式的话会比JPEG至少大5倍，但是图片显示质量却几乎没有提升。（如果你唯一考虑的因素就是图片质量的话，你还是可以使用这个格式的）<br>PNG-24和PNG-8一样也支持alpha透明通道。</p>
+<p>##SVG -无损压缩、矢量模式<br>SVG正变得越来越热门，它不同于以上所有的文件类型，因为它是一个矢量文件格式。这就是说它实际上是由线条和曲线，而不是像素组成的。当你放大一个矢量图像时，你仍然看到一条曲线或一条线。当你放大一个由像素构成的图像时，你会看到像素。<br>例如：<br><img src="http://upload-images.jianshu.io/upload_images/174711-a9016bf1f886252a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/174711-b2a169cc588490f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>这意味着，对于小logo和图标和来说，SVG是很理想的，因为无论是Retina屏幕或在其他低清晰度的屏幕上它的形状都是一样的。这也意味着一个小的SVG logo可以放大但不失真，如果是像素构成的图片格式的话就需要设计多套图片，可以参考Android中的xxxdpi。<br>SVG文件的大小通常是极小的，即使它们看起来的样子真的很大。然而，值得注意的是，SVG文件的大小也取决于要展示图形的复杂度。而且SVG在渲染的时候需要比像素图更多的计算能力，这也就意味着性能的损耗。如果你的logo是特别复杂的，它可能会很耗费性能，甚至文件大小也非常大。所以尽可能简化你的矢量形状的复杂度是很重要也很有必要的。<br>此外，SVG文件是用XML编写的，因此可以在文本编辑器中打开和编辑。这意味着它展示的效果在运行时是可以改变的。例如，你可以使用JavaScript来改变对一个网站的SVG图标的颜色。所以，对于简单的平面形状，像logo或图形，使用svg是坠好的。<br>另外Android现在对SVG的支持也算是比较成熟了，微信团队貌似现在所有的图片资源都替换成SVG了。</p>
+<p>##Summary<br>所以这么一个小小的问题也有这么多值得挖掘的知识点。作为一个合格的工程师，任何一个细节都不可以放过，因为<code>They just make it better</code>.</p>
 
       
     </div>
@@ -402,14 +413,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/03/06/Chord-Nonsense/" rel="next" title="Chord Nonsense   //在此处添加你的标题。">
+                <i class="fa fa-chevron-left"></i> Chord Nonsense   //在此处添加你的标题。
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/06/HTTPS-with-Client-Certificates-on-Android/" rel="prev" title="Android上实现带自签名客户端证书的双向校验HTTPS连接   //在此处添加你的标题。">
-                Android上实现带自签名客户端证书的双向校验HTTPS连接   //在此处添加你的标题。 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/06/Genymotion-problems/" rel="prev" title="Genymotion那点事儿   //在此处添加你的标题。">
+                Genymotion那点事儿   //在此处添加你的标题。 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

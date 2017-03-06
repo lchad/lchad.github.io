@@ -247,6 +247,797 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/06/Genymotion-problems/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lchad">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lchad">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/06/Genymotion-problems/" itemprop="url">
+                  Genymotion那点事儿   //在此处添加你的标题。
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-06T21:19:06+08:00">
+                2017-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android-在此处输入这篇文章的分类。/" itemprop="url" rel="index">
+                    <span itemprop="name">Android   //在此处输入这篇文章的分类。</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>Genymotion</code>是一款非常好用的Android模拟器.它在Android开发者中使用率估计也是最高的.在我使用Genymotion的一年多时间内,碰到过几个令人蛋疼甚至蛋碎的问题,折腾它也浪费了我很多的精力和时间,所以今天就把使用Genymotion中遇到的问题做一个总结,希望大家尤其是像我一样的新手避免重复踩坑,把尽可能多的精力都花在代码上.</p>
+<p>关于如何安装Genymotion的问题我不会多说,也没这个必要,因为无论我怎么说肯定没有官方网站上<code>文档</code>讲的清楚.比较重要的点稍微提一下:<br><strong>1.</strong>要去<a href="https://www.genymotion.com/" target="_blank" rel="external">Genymotion官网</a>注册一个账号.<br><strong>2.</strong>安装<a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" rel="external">Virtual Box</a>虚拟机。</p>
+<p>现在我假设你已经成功安装了Genymotion.接下来介绍一下你<code>可能</code>遇到的各种奇葩的问题.</p>
+<p>##No.1 : 无法下载Genymotion内的镜像<br>大概在2015年下半年的时候,我突然遇到了这样令人<code>懵逼</code>的情况:不翻墙的时候无法安装虚拟机镜像，挂上了ShadowSocks之类的代理之后还是没办法安装，在Genymotion里登录账号的时候它可能会这样:</p>
+<pre><code>genymotion invalid reply from server this may occur if you are using a proxy
+</code></pre><p>即使登陆成功但是选择一个镜像点击下载的时候会还<code>可能</code>会这样：</p>
+<pre><code>Unable to create virtual device. server returned HTTP status code 0.
+</code></pre><p>这特么就尴尬了.Google了好久也试了很多方法，大致找到了几种解决办法.<br><strong>1.</strong>这是我在<code>StackOverFlow</code>上找到的方法，点击<code>Genymotion</code>-&gt;<code>Setting</code>-&gt;<code>Network</code>,勾选上use HTTP proxy选项,<code>HTTP Proxy</code>这里输入 1.234.45.50 ,<code>Port</code>输入 3128 .如下图:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/174711-db7d0804a2c3134d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>通过这个方法我成功下载了一个镜像,但是之后再次尝试也遇到失效的情况.所以这个方法不是很可靠.</p>
+<p><strong>2.</strong>还有一种方法是用<a href="https://www.proxifier.com/" target="_blank" rel="external">Proxifier</a>这个软件给Genymotion再加一层网络代理,代理加上之后就能下载了,亲测可行.至于<code>Proxifier</code>这个软件的使用我就不介绍了,大家随便找一篇帖子看看就会用了.(Proxifier支持<code>Mac</code>和<code>Windows</code>平台,有一个月的免费体验资格,作为程序员还是应该多多支持正版,你懂得.)</p>
+<p><strong>3.</strong>接下来这个方法就比较巧妙,下载速度也是最快的,可以达到满速,但缺点就是稍微麻烦了一点.Genymotion会维持一个日志文件,文件名叫做<code>Genymotion.log</code>具体位置是在你的User目录下的.Genymotion目录下,如果你是Linux系统的话可以参考下图:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/174711-b0e8763238fe4d2d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>Windows系统是在<code>C:\Users\liuchad\AppData\Local\Genymobile</code>这个目录下.</p>
+<p>现在我在<code>Terminal</code>下用<code>VIM</code>打开这个日志文件,如下图:<br><img src="http://upload-images.jianshu.io/upload_images/174711-5854a8790257b4db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>大致浏览一下这个文件会发现一些类似[Genymotion] [Debug][downloadFile]….格式的行,例如:</p>
+<pre><code>3月 14 13:48:07 [Genymotion] [Debug] Launching download
+3月 14 13:48:07 [Genymotion] [Debug] [downloadFile] 
+&quot;https://cloud.genymotion.com/vmtemplate/a9af19b8-8df9-41a8-81ac-a6294648ecc1/getova&quot; 
+-&gt; &quot;/Users/liuchad/.Genymobile/Genymotion/ova/genymotion_vbox86p_5.1_151117_200001.ova&quot;
+</code></pre><p>如果你翻到文件的最底部的那一条,其实它就是你刚刚想要下载但是没有成功的那个镜像的<code>请求地址</code>.所以我们可以尝试着把这个链接粘贴到浏览器里,神奇的事情发生了,我们得到了一段<code>json</code>串:</p>
+<pre><code>[
+{
+platform: &quot;tp&quot;,
+ova_name: &quot;genymotion_vbox86tp_5.1_151117_203708.ova&quot;,
+ova_hash: &quot;d57e3f5425ead4dc40b91cadbc179868af47fcfe&quot;,
+ova_size: 259917312,
+
+ova_url: &quot;http://files2.genymotion.com/dists/5.1.0/ova/genymotion_vbox86tp_5.1_151117_203708.ova&quot;
+}
+]
+</code></pre><p>点击ova_url后面的链接就自动在浏览器里下载对应的ova文件了.</p>
+<p><strong>需要注意的一点:</strong>要事先在浏览器里登录Genymotion的账号,如果处于未登录状态的话,会被<code>重定向</code>到Genymotion的官网,也就无法获取这段json串了.</p>
+<p>下载完毕之后把准备好的<code>ova文件</code>拷贝到这个路径下(<strong>Linux系统</strong>):</p>
+<pre><code>/Users/liuchad/.Genymobile/Genymotion/ova
+</code></pre><p>Windows系统下对应的路径是:</p>
+<pre><code>C:\Users\liuchad\AppData\Local\Genymobile\Genymotion\ova
+</code></pre><p>最后重新进入到Genymotion的下载界面,点击你这个ova文件对应的那个镜像下载,瞬间就下载好了.</p>
+<p><strong>强调一下:</strong>以上请把<code>liuchad</code>替换成你自己的系统用户名.</p>
+<p>##No.2 : 无法安装应用<br>如此费尽周折之后,你高兴的成功安装好了Genymotion,也下载好了各种机型的虚拟机,准备开心的写代码了,但这世界往往不会如想象的那么美好.</p>
+<p>因为你可能会这样:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/174711-dea5a4e41f2a2a7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>还可能会这样:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/174711-82a4d13f92394099.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>其实Genymotion上出现无法安装应用的原因在官网的FAQ上就可以找到线索,请看下面这一段:</p>
+<p> <code>Q : Why does Genymotion return an error message when I try to install an ARM application?
+ A : When you try to install an application compiled for the ARM architecture in Genymotion, you get the following error message:INSTALL_FAILED_CPU_ABI_INCOMPATIBLE.
+ Genymotion uses the x86 architecture, therefore your application is not directly compatible. Depending on your situation, follow either of these methods:
+ -You are the developer of the application:
+ You only need to add the x86 build target to your current targets. For more information, please click here.
+ -You are not the developer of the application:
+ You can either install ARM to x86 translation libraries, which you can find on the Internet or you can contact the developer of the application to ask for x86 architecture support.
+An ARM application running on Genymotion is less stable and efficient than an x86 application. Therefore, we strongly recommend that you only use x86 applications with Genymotion.</code></p>
+<p>Android完全是被ARM所统治的,而Genymotion为了提高运行速度,使用了x86的架构,这也是为什么Genymotion能够比其他模拟器快的根本原因.所以在x86架构上安装ARM的应用肯定会出现冲突不兼容的情况,解决的办法就是安装<code>Genymotion-ARM-Translation</code>补丁,补丁文件可以到这里下载:</p>
+<p>链接: <a href="http://pan.baidu.com/s/1nv1r3EL" target="_blank" rel="external">http://pan.baidu.com/s/1nv1r3EL</a> 密码: pfjj</p>
+<p>下一步就是直接把这个下载好的补丁文件(<strong>不用解压!不用解压!不用解压!</strong>)拖拽到Genymotion里,如果是早前版本的Genymotion的话,会直接提示安装成功,重启一下虚拟机就可以正常安装应用了,但是如果是在较高版本的Genymotion中拖拽成功之后会提示如下:</p>
+<pre><code>Files successfully copied to: /sdcard/Download
+</code></pre><p>竟然只是把文件复制到了虚拟机里,没办法,我们还需要手动的把补丁安装到虚拟机里.进入adb,依次输入如下三条命令：</p>
+<pre><code>&gt;  adb shell
+&gt;  cd /sdcard/Download/
+&gt;  sh /system/bin/flash-archive.sh /sdcard/Download/Genymotion-ARM-Translation_v1.1.zip
+</code></pre><p>最后,重启模拟器即可.至于adb是什么,adb怎么用,由于篇幅的限制,这里不会介绍.</p>
+<p>以下我使用Genymotion版本信息:<br><img src="http://upload-images.jianshu.io/upload_images/174711-6f6b02115b4dd4c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>##在Genymotion中输入中文<br>Genymotion默认是不支持输入中文的,有些情况下我必须要输入中文怎么办呢?这就有些蛋疼了.我尝试安装了很多款手机输入法,例如,搜狗输入法,百度输入法.触宝输入法,Google拼音输入法,QQ手机输入法,这些都是没什么卵用的,测试下来只有必应输入法是可以输入中文的.微软大法好!最后还要在设置里勾选上<code>硬件</code>-&gt;<code>显示输入法</code>,如下:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/174711-77fd08ffdabb6763.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>最后的效果就是这样滴:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/174711-75f6fc4882828960.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/06/How-to-select-image-file-type-Android/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lchad">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lchad">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/06/How-to-select-image-file-type-Android/" itemprop="url">
+                  PNG、JPEG、GIF、SVG应该用哪个？   //在此处添加你的标题。
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-06T21:17:14+08:00">
+                2017-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android-在此处输入这篇文章的分类。/" itemprop="url" rel="index">
+                    <span itemprop="name">Android   //在此处输入这篇文章的分类。</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##Beginning<br>当我们构建网站或者开发App的时候，应当怎样选择使用图片的类型呢？<br>是简单的全部使用一种类型还是根据业务情形选择不同的图片类型呢？<br>每种类型的图片类型又有怎样的优点和缺点呢？</p>
+<p>##Concepts<br>图片呈现效果的异同跟以下两个因素有关：</p>
+<p>首先，压缩分两派：<strong>无损压缩</strong>和<strong>有损压缩</strong>。</p>
+<ul>
+<li><strong>无损压缩</strong> ：能够使图片占用的存储空间变小，而且不会损害图片的质量。</li>
+<li><strong>有损压缩</strong>：相对<strong>无损压缩</strong>会压缩的更狠一点，但是不可避免的会对图片质量产生损害。如果有损压缩的次数多了的话，那么图片的质量也会越来越差。</li>
+</ul>
+<p>其次也有不同的色彩深度（色彩模式）：<strong>索引色彩</strong>和<strong>直接色彩</strong>。</p>
+<ul>
+<li><strong>索引色彩</strong> ：这个模式下图片仅可以存储有限数量的颜色种类（通常是2^8即256种）。</li>
+<li><strong>直接色彩</strong>：这个模式下你可以存储成千上万种颜色值，所以相对而言采用这种模式的图片会显得色彩更加丰富饱满和艳丽。</li>
+</ul>
+<p>接下来会通过这两个维度对常见的几种图片类型来进行分析和比较，总结它们的优缺点和适用场景。</p>
+<p>##BMP - 无损压缩、索引色彩模式、直接色彩模式<br>这是较早出现的一种图片格式。它是无损的但是压缩比例着实很低，BMP格式的图片通常会占用较大的存储空间。它拥有两种色彩模式，但是由于占用存储空间如此之大，几乎没有人会去使用这种格式。<br>擅长：真的没有，BMP格式真的没有任何优点，大家还是尽量不要用这种格式的图片。</p>
+<p>##GIF - 无损压缩、直接色彩模式<br>GIF使用了更好的无损压缩算法，所以你可以压缩图片的大小但是不会丢失任何数据，文件大小也比BMP小得多。但是只可以使用索引色彩模式。这意味着大多数情况下最多只可以有256种颜色显示在图片里。颜色种类貌似真的好少，确实。GIF图片可以动并且拥有透明度（<code>透明或不透明，并没有alpha通道</code>）。<br>擅长：logo，线条，或其他需要尺寸尽可能小的简单图像。</p>
+<p>##JPEG - 有损压缩、直接色彩模式<br>JPEG是一种偏向平衡性的格式，它会舍弃掉人眼根本无法感知的颜色信息，以使文件尽可能小并且细节不丢失。因此，它是一种有损格式。它颜色丰富并且很适合那些允许轻微失真的像素色彩丰富的图片（如相片）。但是有损压缩意味着不适合logo和线图，因为不仅看起来模糊还比GIF占用的文件大小大。<br>擅长：相片，渐变图像。</p>
+<p>##PNG-8 - 无损压缩、索引色彩模式<br>PNG是一种较新的格式，并且PNG-8（PNG的索引模式版本）是GIF格式很好的替代。可是也有一些缺点：首先不能像GIF一样能动，其次对一些老旧的浏览器（如IE6）会有不兼容的问题。<br>擅长：PNG-8相对于GIF来讲有对alpha透明通道的支持。</p>
+<p>##PNG-24 - 无损压缩、直接色彩模式<br>PNG-24对无损压缩和直接色彩模式结合的很好（就像JPEG一样色彩丰富），在这方面和BMP很相似，但是PNG的压缩比率远强过BMP，所以文件大小也更小。不幸的是PNG-24仍然会比JPEG，GIF，PNG-8占用更多的存储空间，所以如果你对文件大小很在意的话，还是要考虑是否要选择以上的一种。</p>
+<p>尽管PNG-24压缩比率较高而且还有丰富的色彩，但它不是为了来取代JPEG的，因为一个照片保存为PNG-24格式的话会比JPEG至少大5倍，但是图片显示质量却几乎没有提升。（如果你唯一考虑的因素就是图片质量的话，你还是可以使用这个格式的）<br>PNG-24和PNG-8一样也支持alpha透明通道。</p>
+<p>##SVG -无损压缩、矢量模式<br>SVG正变得越来越热门，它不同于以上所有的文件类型，因为它是一个矢量文件格式。这就是说它实际上是由线条和曲线，而不是像素组成的。当你放大一个矢量图像时，你仍然看到一条曲线或一条线。当你放大一个由像素构成的图像时，你会看到像素。<br>例如：<br><img src="http://upload-images.jianshu.io/upload_images/174711-a9016bf1f886252a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/174711-b2a169cc588490f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>这意味着，对于小logo和图标和来说，SVG是很理想的，因为无论是Retina屏幕或在其他低清晰度的屏幕上它的形状都是一样的。这也意味着一个小的SVG logo可以放大但不失真，如果是像素构成的图片格式的话就需要设计多套图片，可以参考Android中的xxxdpi。<br>SVG文件的大小通常是极小的，即使它们看起来的样子真的很大。然而，值得注意的是，SVG文件的大小也取决于要展示图形的复杂度。而且SVG在渲染的时候需要比像素图更多的计算能力，这也就意味着性能的损耗。如果你的logo是特别复杂的，它可能会很耗费性能，甚至文件大小也非常大。所以尽可能简化你的矢量形状的复杂度是很重要也很有必要的。<br>此外，SVG文件是用XML编写的，因此可以在文本编辑器中打开和编辑。这意味着它展示的效果在运行时是可以改变的。例如，你可以使用JavaScript来改变对一个网站的SVG图标的颜色。所以，对于简单的平面形状，像logo或图形，使用svg是坠好的。<br>另外Android现在对SVG的支持也算是比较成熟了，微信团队貌似现在所有的图片资源都替换成SVG了。</p>
+<p>##Summary<br>所以这么一个小小的问题也有这么多值得挖掘的知识点。作为一个合格的工程师，任何一个细节都不可以放过，因为<code>They just make it better</code>.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/06/Chord-Nonsense/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lchad">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lchad">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/06/Chord-Nonsense/" itemprop="url">
+                  Chord Nonsense   //在此处添加你的标题。
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-06T21:15:29+08:00">
+                2017-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Music-在此处输入这篇文章的分类。/" itemprop="url" rel="index">
+                    <span itemprop="name">Music   //在此处输入这篇文章的分类。</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>自然音阶</strong> :<br>1 2 3 4 5 6 7<br>C D E F G A B<br>do re mi fa sol la si</p>
+<p>设震动频率<code>f = 440Hz</code>为基准音.<br><code>纯八度</code>:(f, 2f)即(440Hz, 880Hz)为一个纯八度.<br>至于为什么<code>1:2</code>的跨度才能构成一个纯八度,就是物理和数学的奇妙了,宝宝不懂.</p>
+<p><strong>公式</strong> : 1 × <code>全音</code> = 2 × <code>半音</code></p>
+<p><strong>十二平均律/十二等程律</strong>(<code>纯八度</code> <code>➗</code> 12 = 12个<code>半音</code> = 6个<code>全音</code>)<br>把一个<code>纯八度(f, 2f)</code>分为12份,会得到11个不同的单音(f和2f除外),每两个相邻的单音之间的音程是一个<code>半音</code>,它们的频率分别是:<br><img src="http://upload-images.jianshu.io/upload_images/174711-9bb82cdf741e9e60.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>每两个相邻的单音之间是等比关系，比例是<code>12√2</code>(2开十二次方)</p>
+<p>#####极其重要▶️音程关系表:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/174711-a83db3ba1cce0ce3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>各音阶之间的音程关系:<br>C    全  D  全   E   半  F   全   G   全   A  全   B  半<br><strong>图示</strong>(根音后加<code>b</code>表示降音,根音后加<code>#</code>表示升音,升降都是以一个半音为单位):</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/174711-db2f85885c21cdd5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p><strong>调式</strong>(diao shi,不要念成Debug):在一个音阶中,音与音的排列模式.</p>
+<p><strong>大调</strong> 主音为<code>do</code>;<br>音阶排列为：do 全 re 全 mi 半 fa 全 sol 全 la 全 si 半 do;<br><strong>图示</strong>:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/174711-9ae564d5aa772852.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>一级、三级、五级可构成大三和弦do mi sol;（如果看不懂和弦，就先看后面关于三和弦的解释再来思考）<br>调式基本特征：根音上方三度为大三度。</p>
+<p><strong>小调</strong> 主音为la;<br>音阶排列为：la 全 si 半 do 全 re 全 mi 半 fa 全 sol 全 la;<br>就是在大调的基础上把3,6,7音都降半音.<br>一级、三级、五级可构成小三和弦la do mi;<br>调式基本特征：根音上方三度为小三度。</p>
+<p>吉他C大调<strong>低把位</strong>音阶分布(要牢记):</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/174711-dbdd167e76bfb325.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>###三大和弦家族:<br><code>大和弦 (major)</code> :<br>音阶分布 : 1 3 5 7 9 11<br><code>小和弦 (minor)</code> :<br>音阶分布 : 1 b3 5 b7 9 11<br><code>属和弦 (dominant)</code>:<br>音阶分布 : 1 3 5 b7 9 11</p>
+<p>####三和弦(triad):<br>由三个音构成的和弦.</p>
+<p>既然三个音构成的和弦叫做<code>三和弦</code>,那么四个音构成的和弦是不是叫做<code>四和弦</code>呢?答案是否定的.四个音构成的和弦叫做<code>七和弦(seventh chord)</code>,seventh chord的意思是跨度为7度的和弦,但是被中国人直接翻译成为了<code>七和弦</code>,而<code>三和弦</code>作为一个跨5度的和弦却没有被翻译成<code>五和弦</code>,所以造成概念上有一些混乱,很容易混淆它们的概念,绝对是翻译的锅.比较明了的理解方式如下:<br><code>三和弦</code> : <strong>三(个音的)和弦</strong>(但是跨度为5度)<br><code>七和弦</code> : <strong>七(度音的)和弦</strong>(由4个音构成)<br><code>九和弦</code> : <strong>九(度音的)和弦</strong>(由5个音构成)<br><code>十一和弦</code> : <strong>十一(度音的)和弦</strong>(由6个音构成)<br><code>十三和弦</code> : <strong>十三(度音的)和弦</strong>(由7个音构成)<br><code>十五和弦</code> : <strong>并不存在</strong>.</p>
+<p><code>三和弦</code>是流行音乐中最常用到的和弦种类,所以掌握三和弦的原理是很重要也是必要的.如果能够很好的掌握三和弦,那么其他的和弦自然也能够举一反三了.</p>
+<p><strong>关于三和弦很重要的公式:</strong><code>纯五度</code> = <code>大三度</code> + <code>小三度</code> = <code>小三度</code> + <code>大三度</code> = 3.5 * <code>音数</code>.</p>
+<p><strong>大三和弦</strong>:<br>是三和弦的一种.<code>根音</code>与<code>三音</code>之间的音程是<code>大三度</code>,<code>三音</code>与<code>五音</code>之间的音程是<code>小三度</code>.所以大三和弦是<code>大三度</code>+<code>小三度</code>构成的(大三在前,小三在后).大三和弦的表示符号就是根音的字母大写如,C.</p>
+<p><strong>和弦推算举例</strong>:<br><strong>C和弦</strong> : C调中的I级主和弦.指法如下图.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/174711-15229cdfdda1fc50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : C  do<br>三音 : E  mi<br>五音 : G  sol</p>
+<p><strong>很重要!!!</strong>▶️吉他C调标准调弦从6弦到1弦的空弦音分别是:mi la re sol si mi.<br><strong>很重要!!!</strong>▶️吉他上每一个品格是半个音的跨度.<br><strong>很重要!!!</strong>▶️上图最左边的第六弦上有一个叉叉,说明6弦是不弹的.<br><strong>很重要!!!</strong>▶️上图1弦和3弦上的空心圆代表空弦音.<br><strong>很重要!!!</strong>▶️以上三个黑点代表手指要按住的位置.</p>
+<p>推算和弦的目的就是在每一根弦上找到一种按法,这样的话每根弦上的音就变成了此和弦的组成音之一,如果你学会了推算和弦的方法之后,无论任意一个和弦,只要你知道了它的根音,就能很快知道应该怎样在吉他上按这个和弦.下面我们以C和弦为例,介绍一下上图的三个黑点是如何推算出来的.</p>
+<p><strong><em>5弦</em></strong> : 吉他5弦的空弦音是<code>la</code>,那么接下来要考虑的问题就是C和弦的组成音<code>do</code>, <code>mi</code> ,<code>sol</code>中,与la靠的最近的是哪一个呢?答案是do.有的同学就会问了,明明是<code>sol</code>与<code>la</code>最近啊,它就在<code>la</code>的前面,紧挨着啊,这样想是完全正确的,说明你看的很仔细.现在解释一下为什么没有选择<code>la</code>前面的低音<code>sol</code>?我们知道5弦的空弦音已经是<code>la</code>了,如果还要往前推到更低的音sol的话,你会发现这是不可能的,为什么呢?因为5弦的最低音就是空弦音<code>la</code>了,没有比它更低的音存在这个弦上了,所以只好退而求其次选择高音<code>do</code>.接下来计算一下从<code>la</code>到<code>do</code>需要跨几个品格.根据<code>十二平均律</code>,C大调中<code>la</code>到<code>si</code>之间是一个全音,<code>si</code>到<code>do</code>之间是一个半音.一个全音和一个半音就是三个半音,也就是吉他上的三个品,所以5弦上手指就要按到三品上.</p>
+<p><strong><em>4弦</em></strong> : 同理,吉他4弦的空弦音是<code>re</code>,C和弦的组成音<code>do</code>, <code>mi</code> ,<code>sol</code>中,与<code>re</code>音程最近的是…好像是<code>mi</code>诶,根据<code>十二平均律</code>可知<code>re</code>到<code>mi</code>之间相隔一个全音,对应着吉他上的两个品格,所以我们要把手指按在4弦的2品上.</p>
+<p><strong><em>3弦</em></strong> : 吉他3弦的空弦音是<code>sol</code>,直接就是C和弦的组成音,所以3弦保持空弦即可,不用按.</p>
+<p><strong><em>2弦</em></strong> : 吉他2弦的空弦音是<code>si</code>,C和弦的组成音<code>do</code>, <code>mi</code> ,<code>sol</code>中,与<code>si</code>音程最近的是<code>do</code>,根据<code>十二平均律</code>可知<code>si</code>到<code>do</code>之间相隔一个半音,对应着吉他上的一个品格,所以我们要把手指按在2弦的1品上.</p>
+<p><strong><em>1弦</em></strong> : 吉他1弦的空弦音是<code>mi</code>,也是C和弦的组成音,所以1弦保持空弦即可,不用按.</p>
+<p>所以按住C和弦从上到下5弦到1弦依次弹响,发出的音高如下:<br><code>5-&gt;1</code>:do mi sol do mi</p>
+<p><strong>D和弦</strong><br>是D大调中的I级主和弦,指法如下.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/174711-ecadb3a1f88055b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : D  re<br>三音 : F# 升fa<br>五音 : A  la</p>
+<p><strong><em>4弦</em></strong> : D和弦的组成音是 <code>re</code>, <code>F#</code>, <code>la</code>,吉他4弦的空弦音是<code>re</code>也是D和弦的组成音,所以4弦保持空弦即可,不用按.</p>
+<p><strong><em>3弦</em></strong> : D和弦的组成音是 <code>re</code>, <code>F#``la</code>,吉他3弦的空弦音是<code>sol</code>,与<code>sol</code>音程最近的是<code>la</code>诶,根据<code>十二平均律</code>可知<code>sol</code>到<code>la</code>之间相隔一个全音,对应着吉他上的两个品格,所以我们要把手指按在3弦的2品上.<br><strong><em>2弦</em></strong> : D和弦的组成音是 <code>re</code>, <code>F#``la</code>,吉他2弦的空弦音是<code>si</code>,与<code>si</code>音程最近的是<code>re</code>,根据<code>十二平均律</code>可知<code>si</code>到<code>re</code>之间相隔一个高音<code>do</code>,<code>si</code>和<code>do</code>之间相隔一个半音,<code>do</code>和<code>re</code>之间相隔一个全音,加起来是三个半音,对应着吉他上的三个品格,所以我们要把手指按在3弦的2品上.<br><strong><em>1弦</em></strong> : D和弦的组成音是 <code>re</code>, <code>F#``la</code>,吉他1弦的空弦音是<code>mi</code>与<code>mi</code>音程最近的是<code>F#</code>,根据<code>十二平均律</code>可知<code>mi</code>到<code>F</code>之间相隔一个半音,但是要达到小三度的音程关系还需要一个半音,所以就取到<code>F#</code>,加起来是两个半音,对应着吉他上的两个品格,所以我们要把手指按在1弦的2品上.<br>所以按住D和弦从上到下4弦到1弦依次弹响,发出的音高如下:<br><code>4-&gt;1</code>: re la re 升fa</p>
+<p>▶️之后的推算都是一个原理,只要对十二平均律足够熟悉的话,推出来结果是完全没问题的,所以之后的和弦不再展示推算过程,仅给出结果.</p>
+<p><strong>E和弦</strong><br>是E大调中的I级主和弦,指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-983be07436c90161.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : E mi<br>三音 : G# 升sol<br>五音 : B si<br><code>6-&gt;1</code>:mi si mi 升sol si mi</p>
+<p><strong>F和弦</strong><br>是F大调中的I级主和弦,指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-fc78d7e033eec7b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : F fa<br>三音 : A la<br>五音 : C do<br><code>6-&gt;1</code>:fa do fa la do fa</p>
+<p><strong>G和弦</strong><br>是G大调中的I级主和弦,指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-e7510515b3db1f92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : G sol<br>三音 : B si<br>五音 : D re<br>6-&gt;1:sol si re sol si sol</p>
+<p><strong>A和弦</strong><br>是A大调中的I级主和弦,指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-2e1d9b1b6c76b01e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : A  la<br>五音 : C# 升do<br>三音 : E  mi<br><code>5-&gt;1</code>:la mi la 升do mi</p>
+<p><strong>B和弦</strong><br>是B大调中的I级主和弦,指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-6840207534228795.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : B si<br>三音 : D# 升re<br>五音 : F# 升fa<br><code>5-&gt;1</code>:si #fa si #re #fa</p>
+<p>###小三和弦:<br>是三和弦的一种,跨度为5度.<code>根音</code>与<code>三音</code>之间是<code>小三度</code>,<code>三音</code>与<code>五音</code>之间是<code>大三度</code>.<br>所以小三和弦是由<code>小三度</code>+<code>大三度</code>构成的.<br><strong>和弦推算举例</strong>:<br><strong>Am和弦</strong><br>是C大调中的VI级和弦,指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-bf6a7180e11dfa82.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : A  la<br>三音 : C  do<br>五音 : E  mi<br><code>5-&gt;1</code>:la mi la do mi</p>
+<p><strong>Bm和弦</strong><br>是C大调中的VII级和弦,指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-1bf2bbee02eebbc2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : B si<br>三音 : D re<br>五音 : F# 升fa<br><code>5-&gt;1</code>:si 升fa si re 升fa</p>
+<p><strong>Dm和弦</strong><br>是C大调中的II级和弦,指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-ef3a9f04758b268f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : D re<br>三音 : F fa<br>五音 : A la<br>4-&gt;1:re la re fa</p>
+<p><strong>Em和弦</strong><br>是C大调中的III级和弦,指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-75a5647b5ca8443a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : E mi<br>三音 : G sol<br>五音 : B si<br>6-&gt;1:mi si mi sol si mi</p>
+<p>####属七和弦（dominant seventh chord）<br>又可称：<strong>大小七和弦(major minor seventh chord)</strong><br>是由根音，大三度，纯五度，和小七度这<code>四个音</code>构成的和弦。<br>是在大三和弦的基础上再增加小三度.</p>
+<p><strong>G7和弦</strong><br>指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-2b021b844c51d957.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>是C大调中的V级属七和弦,指法如下.<br> <code>组成音</code>:<br>根音 : G sol<br>三音 : B si<br>五音 : D re<br>七音 : F fa<br><code>6-&gt;1</code>:sol si re sol si fa</p>
+<p>####大大七和弦<br>可简称为<strong>大七和弦</strong><br>是由根音,大三度,纯五度,大七度这四个音构成的和弦<br>是在大三和弦基础上再增加大三度.</p>
+<p><strong>Gmaj7/GM7/Δ7和弦</strong><br>指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-8e0fa698ab538f7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : G<br>三音 : B<br>五音 : D<br>七音 : F#<br><code>6-&gt;1</code>: sol si re sol si 升fa</p>
+<p>####小小七和弦<br>可简称为<strong>小七和弦</strong><br>由根音,小三度,纯五度,小七度这四个音构成的和弦.<br>在小三和弦基础上再增加小三度.<br><strong>Dm7和弦</strong><br>指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-b705d90cdcb0a64f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : D re<br>三音 : F fa<br>五音 : A la<br>七音 : C do<br><code>4-&gt;1</code>:re la do fa</p>
+<p>####小大七和弦<br>是由根音,小三度,纯五度,大七度这四个音构成的和弦.<br>在小三和弦基础上再增加大三度.<br><strong>AmM7/aM7和弦</strong><br>指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-7eaf82d909ca5c77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : A la<br>三音 : C do<br>五音 : D mi<br>七音 : G# 升sol<br><code>5-&gt;1</code>:la mi 升sol do mi</p>
+<p>####加音和弦</p>
+<p><strong>Cadd6/C6和弦</strong><br>就是在C和弦基础上加了六度音A（6）<br>指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-e78eecc558f32644.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : C do<br>三音 : E mi<br>五音 : G sol<br>六音 : A la<br><code>5-&gt;1</code>:do mi la do mi</p>
+<p><strong>Csus4和弦</strong><br>就是在C和弦基础上加了四度音fa（4）<br>通常三度音会被省略,可以读成C挂4和弦.<br>指法如下.<br><img src="http://upload-images.jianshu.io/upload_images/174711-bef39c6aff80ff22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><code>组成音</code>:<br>根音 : C do<br>四音 : F fa<br>五音 : G sol<br><code>5-&gt;1</code>:do fa sol do fa</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/06/HTTPS-with-Client-Certificates-on-Android/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lchad">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lchad">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/06/HTTPS-with-Client-Certificates-on-Android/" itemprop="url">
+                  Android上实现带自签名客户端证书的双向校验HTTPS连接   //在此处添加你的标题。
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-06T21:12:41+08:00">
+                2017-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android-在此处输入这篇文章的分类。/" itemprop="url" rel="index">
+                    <span itemprop="name">Android   //在此处输入这篇文章的分类。</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在阅读文章之前读者应该对一些重要概念有一个基本的认识:</p>
+<p><strong>http&amp;&amp;ssl:</strong><br>为了提高网络传输的安全性，一般会在比较敏感的部分采用https传输，比        如注册、登录、控制台等。像Gmail、网银、icloud等则全部采用https传输。    https/ssl主要起到两个作用：认证、内容加密传输和数据一致性。经CA签发的证书才起到认证可信的作用，所有有效证书均可以起到加密传输的作用。</p>
+<p><strong>数字证书:</strong><br>主要在互联网上的用于身份验证的用途。 安全站点在获得CA（Certificate Authority数字证书认证机构）认证后，获得一个数字证书，以此来标识其合法身份的真实性。数字证书主要分为服务器证书和客户端证书。服务器证书（SSL证书）用来进行身份验证和通信的加密，客户端证书主要用于身份验证和电子签名。找CA申请证书是要收费的。</p>
+<hr>
+<p>以下是正文</p>
+<p>许多Android应用都在使用RESTful或其他基于HTTP协议的模式来和服务器进行通信。</p>
+<p>在Android系统上使用HTTP是很简单的,而且文档也相当完备.在不同的Android系统版本上,HTTPClient和HttpURLConnection都是可以使用的,但是Google官方的建议是在2.3及以上版本使用HttpURLConnection,2.2及更早的版本使用HttpClient。</p>
+<p>可是当你需要使用HTTPS的时候,会比使用HTTP稍微麻烦一点.在一个近期的项目中,我们要和一个需要客户端证书校验的HTTPS服务器进行通信,并且服务端证书要是自签名的.这样就变得有些棘手了,这篇文章接下来的部分就会介绍到我们遇到的一些挑战。</p>
+<p>如果你想直接看代码的话,可以来这里获取<a href="https://github.com/rfreedman/android-ssl" target="_blank" rel="external">Github</a>。当然你需要搭建自己的HTTPS服务器并且生成客户端证书.其中一种方式就是使用<a href="http://httpd.apache.org/docs/2.2/mod/mod_ssl.html" target="_blank" rel="external">Apache mod_ssl module</a>。</p>
+<p>在Android上使用HTTP或HTTPS之前,要确保你的应用有访问网络的权限,正确姿势如下(在AndroidManifest.xml文件中添加):</p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
+</code></pre><p>###挑战1:使用客户端证书</p>
+<p>我们的客户端证书是<a href="http://en.wikipedia.org/wiki/PKCS_12" target="_blank" rel="external">PKCS 12</a>格式的,文件扩展名为.p12。</p>
+<p>为了让我们的应用能够拿到证书,我们使用DDMS工具来把证书文件复制到设备SD卡的根目录下,如果你在使用一台虚拟机的话,也同样可以把证书复制到SD卡根目录下.你也可以通过USB的方式从电脑把证书文件复制到设备SD卡根目录下。</p>
+<p>在我们的最终版应用中,我们会把证书复制到应用特有的存储空间中(应该是<strong>/Android/data/package name</strong>这个目录下),之后把SD卡根目录下的原始证书删除掉。</p>
+<p>使用客户端证书的关键之处是创建一个包含证书的<a href="http://developer.android.com/intl/zh-cn/reference/java/security/KeyStore.html" target="_blank" rel="external">KeyStore</a>,然后使用这个KeyStore创建一个自定义的<a href="https://docs.oracle.com/javase/7/docs/api/javax/net/ssl/SSLContext.html" target="_blank" rel="external">SSLContext</a>。</p>
+<p>当我们拿到了包含客户端证书和证书密码的文件引用的时候,我们把它加载到一个合适的<a href="https://docs.oracle.com/javase/7/docs/api/java/security/KeyStore.html" target="_blank" rel="external">KeyStore</a>中。(这里可以参考一下示例源码中的SSLContextFactory.java):</p>
+<pre><code>keyStore = KeyStore.getInstance(&quot;PKCS12&quot;);
+fis = new FileInputStream(certificateFile);
+keyStore.load(fis, clientCertPassword.toCharArray());
+</code></pre><p>现在我们已经拥有了包含客户端证书的KeyStore,我们可以使用它来构建一个SSLContext:</p>
+<pre><code>KeyManagerFactory kmf = KeyManagerFactory.getInstance(&quot;X509&quot;);
+kmf.init(keyStore, clientCertPassword.toCharArray());
+KeyManager[] keyManagers = kmf.getKeyManagers();
+SSLContext sslContext = SSLContext.getInstance(&quot;TLS&quot;);
+sslContext.init(keyManagers, null, null);
+</code></pre><p>这个SSLContext可以应用在HTTPUrlConnection的方式与服务端连接的过程中用到:</p>
+<pre><code>String result = null;
+HttpURLConnection urlConnection =null;
+try {
+    URL requestedUrl = new URL(url);
+    urlConnection = (HttpURLConnection)requestedUrl.openConnection();
+    if(urlConnection instanceof HttpsURLConnection) {  
+        ((HttpsURLConnection)urlConnection).setSSLSocketFactory(sslContext.getSocketFactory());
+    }
+    urlConnection.setRequestMethod(&quot;GET&quot;);   
+    urlConnection.setConnectTimeout(1500);
+    urlConnection.setReadTimeout(1500);
+    lastResponseCode = urlConnection.getResponseCode();
+    result = IOUtil.readFully(urlConnection.getInputStream());
+    lastContentType = urlConnection.getContentType();
+} catch (Exception ex) {
+    result = ex.toString();
+} finally { 
+    if (urlConnection != null) {
+        urlConnection.disconnect();    
+    }
+}
+</code></pre><p>###挑战2:如何确保自签名证书[<strong>译注2</strong>]是可信任的。</p>
+<p>现在我们有了可以和HTTPS服务器通过证书连接的客户端代码了。同时持有着客户端证书,可是这只在服务端的证书是可信任的情况下才有用。实际上,这意味着服务端的证书必须被至少一个主流的认证机构所认证,例如<strong>VeriSign,Thawte,Geotrust,Comodo</strong>等. <strong>CA</strong>(Certificate Authority数字证书认证机构) 认证过的证书都是可以在手机上预置进去的。</p>
+<p>但我们的证书是自签名的,这意味着SSLContext中默认的<a href="http://docs.oracle.com/javase/6/docs/api/javax/net/ssl/TrustManager.html" target="_blank" rel="external">TrustManager</a>是不会信任服务端证书的,并且也无法达成SSL连接。</p>
+<p>如果你尝试着在网络上搜索如何实现自信任证书的HTTPS连接,可能会得到很多错误的建议,绝大多数的答案都是教给开发者直接信任<strong>任何证书</strong>就可以了。这当然算是一个误导了,也是不安全的,因为这样做会有被<strong>中间人攻击</strong>[<strong>译注1</strong>]的风险。</p>
+<p>我们真正想做的是创建一个自定义的TrustManager,这个TrustManager可以信任我们的自签名证书,并且能被我们的自定义SSLContext使用.因此我们需要一份服务端证书链的副本,这个副本必须包括CA的自签名证书,至少也是CA签署的中级证书。如果你正常地导出服务器的证书,你会得到一个文件,这个文件包含有三个证书- CA认证的证书,中级证书和服务器的证书。这是OK的,额外的证书不是必须的,但也不会有坏处(可以参见下面的<strong>挑战#3</strong>)。</p>
+<p>信任自签名的服务端证书的方式和提供客户端证书的方式是很相近的.我们把证书装载到KeyStore中,使用KeyStore来生成一个TrustManger的数组,然后使用这些TrustManager来创建SSLContext。</p>
+<p>在我们的app中,我们把服务端证书放到资源文件下(猜测应该是asset目录下,因为证书对于每一个用户来说都是相同的,并且也不会经常发生改变),但是也可以放在设备的外部存储上。</p>
+<p>下面是加载服务端证书链到keystore的代码:</p>
+<pre><code>byte[] der = loadPemCertificate(new ByteArrayInputStream(certificateString.getBytes()));
+ByteArrayInputStream derInputStream = new ByteArrayInputStream(der);
+CertificateFactory certificateFactory = CertificateFactory.getInstance(&quot;X.509&quot;);
+X509Certificate cert = (X509Certificate) certificateFactory.generateCertificate(derInputStream);
+String alias = cert.getSubjectX500Principal().getName();
+KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
+trustStore.load(null);
+trustStore.setCertificateEntry(alias, cert);
+</code></pre><p>既然我们有了可信任并带有服务端证书的keystore,就可以用它来初始化SSLContext,<br>基于我们之前的代码,现在生成SSLContext的代码变成了如下:</p>
+<pre><code>KeyManagerFactory kmf = KeyManagerFactory.getInstance(&quot;X509&quot;);
+kmf.init(keyStore, clientCertPassword.toCharArray());
+KeyManager[] keyManagers = kmf.getKeyManagers();
+TrustManagerFactory tmf = TrustManagerFactory.getInstance(&quot;X509&quot;);
+tmf.init(trustStore);&lt;br&gt;TrustManager[] trustManagers = tmf.getTrustManagers();
+SSLContext sslContext = SSLContext.getInstance(&quot;TLS&quot;);
+sslContext.init(keyManagers, trustManagers, null);
+</code></pre><p>现在,我们可以安全的连接到服务端了,而且只信任我们自己的服务端证书,持有我们的客户端证书。如果一切顺利的话,你已经成功了,可以不用继续读下去了。</p>
+<p>###挑战3:处理顺序不正确的服务端证书链</p>
+<p>事实证明,一些apache mod_ssl 安装配置(或者其他的SSL提供者),<br>无论是bug还是错误配置,都会导致服务端证书顺序出现错误。</p>
+<p>为了保持正常工作,服务端证书链中的证书都要以root开头,或者 CA certificate其次是中级证书,如果服务端证书也被包含进来,一定要放到最后一个,链中的每个证书(除了root开头的)都必须在用来签名的证书之前。</p>
+<p>在我们的项目实际情况下,一个被错误配置的服务器会生成一个证书链,这个证书链以服务端的证书开头,接下来是根证书,然后是中级证书,这会导致SSL手失败。</p>
+<p>这种情况下最简单的做法就是:如果可以的话,把服务端证书链的顺序调整好,<br>如果不能,乱序的证书链只能在客户端处理了。</p>
+<p>在我们的android app中,我们通过实现一个自定义的X509TrustManager来让证书链重新排序。</p>
+<p>X509TrustManager的代码太长了,没办法完全展示到这里,但是当我们实现了它之后,就可以在SSLContext初始化的过程中,通过这个自定义实现来替换’trustStores’的数组。</p>
+<pre><code>KeyManagerFactory kmf = KeyManagerFactory.getInstance(&quot;X509&quot;);
+kmf.init(keyStore, clientCertPassword.toCharArray());
+KeyManager[] keyManagers = kmf.getKeyManagers();
+TrustManager[] trustManagers = { new CustomTrustManager(trustStore)};
+SSLContext sslContext = SSLContext.getInstance(&quot;TLS&quot;);
+sslContext.init(keyManagers, trustManagers,null);
+</code></pre><p>只要加载我们自己的证书到keystore和 Truststore中,并且对服务端证书链进行重新排序的方式,我们就能够创建一个通过客户端证书连接到SSL服务器的SSLContext,即使证书链的书序是错误的并且是自签名的。</p>
+<hr>
+<p>####译注:</p>
+<p>[<strong>1</strong>]<strong>中间人攻击(Man-in-the-middle attack)</strong><br>是指攻击者与通讯的两端分别创建独立的联系，并交换其所收到的数据，使通讯的两端认为他们正在通过一个私密的连接与对方直接对话，但事实上整个会话都被攻击者完全控制。在中间人攻击中，攻击者可以拦截通讯双方的通话并插入新的内容。在许多情况下这是很简单的。</p>
+<p>[<strong>2</strong>]<strong>自签名证书(self-signed certificate)</strong><br>非CA颁发的证书，通过自签名的方式得到的证书。例如在Web上,浏览器会显示一个对话框，询问您是否希望信任一个自签名证书。这个是不用花钱的。</p>
+<hr>
+<p>由于公司有这方面的需求,查了很多资料,找到了一篇很好的文章,所以试着翻译了一下,这是一篇译文,<strong>并非原创!!!并非原创!!!并非原创!!!</strong>也没有100%照着原文翻译的,增加了一些标注解释和自己的理解,翻译的很烂,求喷,谢谢。<br>原文作者 : <a href="hhttps://github.com/rfreedman" target="_blank" rel="external">Rich Freedman</a><br>文章出处 : <a href="http://chariotsolutions.com/blog/post/https-with-client-certificates-on/" target="_blank" rel="external">HTTPS with Client Certificates on Android</a><br>示例程序 : <a href="https://github.com/rfreedman/android-ssl" target="_blank" rel="external">android-ssl</a></p>
+<hr>
+<p>其他可以参考的资料:<br><a href="http://developer.android.com/intl/zh-cn/training/articles/security-ssl.html" target="_blank" rel="external">http://developer.android.com/intl/zh-cn/training/articles/security-ssl.html</a><br><a href="https://www.zhihu.com/question/31872273" target="_blank" rel="external">https://www.zhihu.com/question/31872273</a><br><a href="http://www.open-open.com/lib/view/open1413071600531.html#6734290-tsina-1-33379-8c2b59db2c0455f25f549fc37e66faa9" target="_blank" rel="external">http://www.open-open.com/lib/view/open1413071600531.html#6734290-tsina-1-33379-8c2b59db2c0455f25f549fc37e66faa9</a><br><a href="http://blog.csdn.net/logo616/article/details/12983395" target="_blank" rel="external">http://blog.csdn.net/logo616/article/details/12983395</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/06/Huawei-log/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -389,132 +1180,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/06/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lchad">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="lchad">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/06/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-06T20:47:50+08:00">
-                2017-03-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -560,7 +1225,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
@@ -571,7 +1236,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">Kategorien</span>
               
             </div>
