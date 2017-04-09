@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Android Developer">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="lchad">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="GIS坐标转换"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Android Developer" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="lchad"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>GIS坐标转换 - lchad</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', '[object Object]', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-96017100-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">悄悄问圣僧,女儿美不美?</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about">
+                            
+                                about
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/lchad">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/black.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>GIS坐标转换</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        2017-04-09
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+<a href="/categories/GIS/">GIS</a>
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>最近在做一个千寻FindM高精度定位的项目,由于对GIS的知识储备十分有限,其中坐标转换的问题花了我不少时间,所以在这里总结一下.</p>
+<h2 id="经纬度的格式"><a href="#经纬度的格式" class="headerlink" title="经纬度的格式"></a>经纬度的格式</h2><p>经纬的表示方法有三种:</p>
+<ul>
+<li>度 ddd.ddddd°</li>
+<li>度分  dd°mm.mmm′</li>
+<li>度分秒 ddd°mm′ss″ </li>
+</ul>
+<p>我们最常使用的就是第一种,度格式,如<code>(31.220018, 121.351505)</code><br>但是我的项目中,需要从硬件(Gmouse)读取出来经纬度,然后把它正确的显示在高德地图上,以此来测试定位的精确度,但是我得到的结果却是<code>(3113.33126, 12120.85937)</code>这样的度分格式,所以需要进行转换,度分格式的意义如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(3113.33126, 12120.85937) ==&gt; (31°13.33126′, 121°20.85937′)</div></pre></td></tr></table></figure></p>
+<p>小数点左边的高两位代表度的整数,高两位后面的(如13.33126)代表分的大小.</p>
+<p>度分格式转换为度格式的公式为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">abcd.efghd ==&gt; ab° + cd.efghd′ ==&gt; ab° + (cd.dfghd / 60)°</div></pre></td></tr></table></figure></p>
+<p>度分秒格式的转换和度分格式几乎一样:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(313000, 1233000) ==&gt; (31°30′00″, 123°30′00″)</div></pre></td></tr></table></figure></p>
+<p>度分秒格式转换为度的公式为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">abcdefg ==&gt; abc° + cd′ + dfg″ ==&gt; ab° + (cd / 60)° + (def / 60 / 60)°</div></pre></td></tr></table></figure></p>
+<h2 id="经纬度的坐标系"><a href="#经纬度的坐标系" class="headerlink" title="经纬度的坐标系"></a>经纬度的坐标系</h2><p>我们常用的经纬度的坐标系有如下几种:</p>
+<ul>
+<li>WGS84 (世界通用标准)</li>
+<li>GCJ02 (天朝标准)</li>
+<li>BD09 (百度标准)</li>
+</ul>
+<p>WGS84坐标是全世界公认的坐标体系,使用最为广泛,Google Map使用的就是这个坐标系;GCJ02是中国特色主义标准,声称为了国家安全,对WGS84标准坐标系做一些offset(妈的智障),大多数中国地图提供商都是使用的这个坐标系;BD09是百度的坐标系,其实也是基于GCJ02,相当与又做了一次offset.<br>他们的转换关系可以用如下代码来描述:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line">public static double pi = 3.1415926535897932384626;</div><div class="line">public static double a = 6378245.0;</div><div class="line">public static double ee = 0.00669342162296594323;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 地球坐标系 (WGS84) 与中国坐标系 (GCJ-02) 的转换算法 将 WGS84 坐标转换成 GCJ-02 坐标</div><div class="line"> */</div><div class="line">public static double[] wgs84_To_Gcj02(double lat, double lon) &#123;</div><div class="line">    if (lon &lt; 72.004 || lon &gt; 137.8347) &#123;</div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line">    if (lat &lt; 0.8293 || lat &gt; 55.8271) &#123;</div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line">    double dLat = transformLat(lon - 105.0, lat - 35.0);</div><div class="line">    double dLon = transformLon(lon - 105.0, lat - 35.0);</div><div class="line">    double radLat = lat / 180.0 * pi;</div><div class="line">    double magic = Math.sin(radLat);</div><div class="line">    magic = 1 - ee * magic * magic;</div><div class="line">    double sqrtMagic = Math.sqrt(magic);</div><div class="line">    dLat = (dLat * 180.0) / ((a * (1 - ee)) / (magic * sqrtMagic) * pi);</div><div class="line">    dLon = (dLon * 180.0) / (a / sqrtMagic * Math.cos(radLat) * pi);</div><div class="line">    double mgLat = lat + dLat;</div><div class="line">    double mgLon = lon + dLon;</div><div class="line">    return new double[]&#123;mgLon, mgLat&#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 中国坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法 将 GCJ-02 坐标转换成 BD-09 坐标</div><div class="line"> */</div><div class="line">public static double[] gcj02_To_Bd09(double gg_lon, double gg_lat) &#123;</div><div class="line">    double z = Math.sqrt(gg_lon * gg_lon + gg_lat * gg_lat) + 0.00002 * Math.sin(gg_lat * pi);</div><div class="line">    double theta = Math.atan2(gg_lat, gg_lon) + 0.000003 * Math.cos(gg_lon * pi);</div><div class="line">    double bd_lon = z * Math.cos(theta) + 0.0065;</div><div class="line">    double bd_lat = z * Math.sin(theta) + 0.006;</div><div class="line">    return new double[]&#123;bd_lon, bd_lat&#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 地球坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法 将 GCJ-02 坐标转换成 BD-09 坐标</div><div class="line"> */</div><div class="line">public static double[] wgs84_To_Bd09(double lon, double lat) &#123;</div><div class="line">    if (lon &lt; 72.004 || lon &gt; 137.8347) &#123;</div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line">    if (lat &lt; 0.8293 || lat &gt; 55.8271) &#123;</div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line">    double dLat = transformLat(lon - 105.0, lat - 35.0);</div><div class="line">    double dLon = transformLon(lon - 105.0, lat - 35.0);</div><div class="line">    double radLat = lat / 180.0 * pi;</div><div class="line">    double magic = Math.sin(radLat);</div><div class="line">    magic = 1 - ee * magic * magic;</div><div class="line">    double sqrtMagic = Math.sqrt(magic);</div><div class="line">    dLat = (dLat * 180.0) / ((a * (1 - ee)) / (magic * sqrtMagic) * pi);</div><div class="line">    dLon = (dLon * 180.0) / (a / sqrtMagic * Math.cos(radLat) * pi);</div><div class="line">    double mgLat = lat + dLat;</div><div class="line">    double mgLon = lon + dLon;</div><div class="line">    return gcj02_To_Bd09(mgLon, mgLat);</div><div class="line">&#125;</div><div class="line"></div><div class="line">private static double transformLat(double x, double y) &#123;</div><div class="line">    double ret = -100.0 + 2.0 * x + 3.0 * y + 0.2 * y * y + 0.1 * x * y</div><div class="line">            + 0.2 * Math.sqrt(Math.abs(x));</div><div class="line">    ret += (20.0 * Math.sin(6.0 * x * pi) + 20.0 * Math.sin(2.0 * x * pi)) * 2.0 / 3.0;</div><div class="line">    ret += (20.0 * Math.sin(y * pi) + 40.0 * Math.sin(y / 3.0 * pi)) * 2.0 / 3.0;</div><div class="line">    ret += (160.0 * Math.sin(y / 12.0 * pi) + 320 * Math.sin(y * pi / 30.0)) * 2.0 / 3.0;</div><div class="line">    return ret;</div><div class="line">&#125;</div><div class="line"></div><div class="line">private static double transformLon(double x, double y) &#123;</div><div class="line">    double ret = 300.0 + x + 2.0 * y + 0.1 * x * x + 0.1 * x * y + 0.1</div><div class="line">            * Math.sqrt(Math.abs(x));</div><div class="line">    ret += (20.0 * Math.sin(6.0 * x * pi) + 20.0 * Math.sin(2.0 * x * pi)) * 2.0 / 3.0;</div><div class="line">    ret += (20.0 * Math.sin(x * pi) + 40.0 * Math.sin(x / 3.0 * pi)) * 2.0 / 3.0;</div><div class="line">    ret += (150.0 * Math.sin(x / 12.0 * pi) + 300.0 * Math.sin(x / 30.0 * pi)) * 2.0 / 3.0;</div><div class="line">    return ret;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>示例代码如下:<br><a href="https://github.com/lchad/GnnsSample" target="_blank" rel="external">GitHub</a></p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/lchad" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/lchad" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/lchad" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="mailto:liucaidong18@gmail.com" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 lchad<br></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

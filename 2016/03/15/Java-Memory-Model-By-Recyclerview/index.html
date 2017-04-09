@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Android Developer">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="lchad">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="从RecyclerView的一个bug看Java内存模型"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Android Developer" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="lchad"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>从RecyclerView的一个bug看Java内存模型 - lchad</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', '[object Object]', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-96017100-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">悄悄问圣僧,女儿美不美?</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about">
+                            
+                                about
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/lchad">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/android.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>从RecyclerView的一个bug看Java内存模型</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        2016-03-15
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+<a href="/categories/Java/">Java</a>
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>今天在写一个RecyclerView的Demo,大致的状况就是请求网络分页加载数据,解析成bean然后填到列表里,展示瀑布流出来.但是写完之后列表却一直都是空的,但是断点里也能清楚地看到数据解析成功,被设置到了adapter中,反复看了好久,最后还是在同事的指点下,跳出了坑,其实问题是Java引用的问题,我先把错误的代码贴出来.大家观摩一下.<br><a id="more"></a><br>Adapter:</p>
+<p>public class RecyclerViewAdapter extends RecyclerView.Adapter<postviewholder> {  </postviewholder></p>
+<pre><code>private Context context;  
+public List&lt;PostsEntity&gt; list = new ArrayList&lt;&gt;();  
+
+public RecyclerViewAdapter(Context context, List&lt;PostsEntity&gt; list) {  
+    this.context = context;  
+    this.list = list;  
+}  
+
+@Override  
+public PostViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {  
+    PostViewHolder holder = new PostViewHolder(LayoutInflater.from(  
+            context).inflate(R.layout.post_detail_item, viewGroup, false));  
+    return holder;  
+}  
+
+@Override  
+public void onBindViewHolder(PostViewHolder viewHolder, int position) {  
+    //填充界面等操作...  
+}  
+
+@Override  
+public int getItemCount() {  
+    return list == null ? 0 : list.size();  
+}  
+</code></pre><p>} </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Activity:</div></pre></td></tr></table></figure>
+<p>public class HomeActivity extends AppCompatActivity {  </p>
+<pre><code>@Bind(R.id.recyclerview)  
+RecyclerView recyclerview;  
+
+private List&lt;PostsEntity&gt; originalList;  
+private RecyclerViewAdapter adapter;  
+
+@Override  
+protected void onCreate(@Nullable Bundle savedInstanceState) {  
+    super.onCreate(savedInstanceState);  
+    setContentView(R.layout.activity_home);  
+    ButterKnife.bind(this);  
+    init();  
+    loadData();  
+}  
+
+private void init() {  
+    list = new ArrayList&lt;&gt;();  
+    adapter = new RecyclerViewAdapter(HomeActivity.this, originalList);  
+    LinearLayoutManager mManager = new LinearLayoutManager(HomeActivity.this, LinearLayoutManager.VERTICAL, false);  
+    recyclerview.setAdapter(adapter);  
+    recyclerview.setLayoutManager(mManager);  
+}  
+
+private void loadData() {  
+    OkHttpUtils.get().url(URL).build().execute(new StringCallback() {  
+        @Override  
+        public void onError(Call call, Exception e) {  
+        }  
+
+        @Override  
+        public void onResponse(final String response) {  
+            Gson gson = new Gson();  
+            final PostBean bean = gson.fromJson(response, PostBean.class);  
+            assembleData(bean);  
+        }  
+    });  
+}  
+
+private void assembleData(PostBean bean) {  
+    originalList = bean.getPosts();&lt;span style=&quot;white-space:pre&quot;&gt; &lt;/span&gt;//问题就出现在了这里!!!  
+    adapter.notifyDataSetChanged();  
+}  
+</code></pre><p>}<br>```</p>
+<p>好了直接看出问题的可以打我了哭哭,没看出来的往下看,听我缩.</p>
+<p>讲解原因之前,先介绍一下Java的内存模型,其实在自己刚开始学习Java的时候(一年多之前)记过这样一条笔记:</p>
+<p>但是,如果当初能够真正的理解这些概念,也不至于有今天的事情,还是那句话:纸上得来终觉浅,绝知此事要躬行.<br>上面的话大致可以这样理解,Book book = new Book();这句话其实创建了两个变量:book为引用变量,存储在堆栈中;new出来的Book()为值变量,存在堆中.book的值就是Book()的地址.这是分析上面问题的先决条件.</p>
+<p>下面再上一张我自己画的关于这段出错程序的图,</p>
+<p>上图一共分为6部,三个区域(从左至右为Activity的栈空间, Java的堆空间,Adapter的栈空间),我们一步一步看.</p>
+<p>1.在Activity的onCreate()方法中我们初始化一个空的originalList,用来存放接下来从服务端获取的bean.</p>
+<p>2.我们在new RecyclerViewAdapter的时候,把originalList以构造方法参数的形式传进去.</p>
+<p>3.在Adapter的构造方法内部,this.list = list;这一行就是第三步.</p>
+<p>4.在loadData()方法中我们请求到了真正的数据bean.getPosts(),这是一个以PostEntity为元素的列表.</p>
+<p>5和6.在我们出错的那一行,originalList = bean.getPosts();此时original作为一个引用变量,它的值变了,不再指向上面的那块内存区域,从而指向下面的那块内存区域.</p>
+<p>可是这时候我们的adapter内的list还是指向原来的内存区域,那块区域里还是空的,自然RecyclerView就是空的了,不展示任何东西.所以问题症结所在也就一目了然了.</p>
+<p>下面贴一下正确的做法:</p>
+<p>private void assembleData(PostBean bean) {<br>       list.clear();<br>       list.addAll(bean.getPosts())<br>       adapter.notifyDataSetChanged();<br>   }  </p>
+<p>最后要做一下总结,出现这个问题还是因为自己的基础不过关,当初是记过笔记,但大多还是流于表面形式,没有在编码实践中有所体会.正所谓”基础不牢,地动山摇”,现在踩得每一个坑都是自己以前埋下的.</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/lchad" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/lchad" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/lchad" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="mailto:liucaidong18@gmail.com" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 lchad<br></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

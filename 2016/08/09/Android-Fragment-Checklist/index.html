@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Android Developer">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="lchad">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Android中关于Fragment使用的CheckList"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Android Developer" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="lchad"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Android中关于Fragment使用的CheckList - lchad</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', '[object Object]', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-96017100-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">悄悄问圣僧,女儿美不美?</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about">
+                            
+                                about
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/lchad">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/black.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Android中关于Fragment使用的CheckList</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        2016-08-09
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+<a href="/categories/Android/">Android</a>
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p><code>Fragment</code>自Android3.0时代被推出,它 的出现一方面是为了缓解 <code>Activity</code> 任务过重的问题(大型项目中<code>Activity</code>会变得十分臃肿)，另一方面是为了处理在不同屏幕上 UI 组件的布局问题(适配平板)，而且它还提供了一些新的特性（例如 <code>Retainable</code>）来处理一些在 <code>Activity</code> 中比较棘手的问题,<code>Fragment</code>相对<code>Activity</code>来讲比较省资源,启动速度也相对较快(例如新版知乎就采用了一个<code>Activity</code>配合多个<code>Fragment</code>的方式,在使用的过程中能明显感觉到打开页面比之前快很多).但是<code>Fragment</code>也存在一个很严重的问题,那就是生命周期过于复杂,会出现一些莫名其妙的bug,像<code>FaceBook</code>,<code>Square</code>这些公司就对<code>Fragment</code>敬而远之.<br><a id="more"></a><br>究竟<code>Fragment</code>到底是好是坏,大家也总是吵个不休,没有一个结论,但是我个人还是比较喜欢使用<code>Fragemnt</code>的,可能是受到了我的启蒙书籍<code>&lt;&lt;Android编程权威指南&gt;&gt;</code>(这本书是一本基础书,里面对<code>Fragment</code>极其的推崇,奉行的原则就是<code>AUF</code>（ Always Use Fragments）,所以这这本书对<code>Fragment</code>的讲解还是很不错的)的影响吧.所以在这里对<code>Fragment</code>应该注意的地方做一个总结.</p>
+<p>1.在<code>Fragment</code>的<code>onCreateView()</code>方法中,我们要通过<code>LayoutInflater</code>来<code>inflate()</code>出一个布局(即<code>rootView</code>),但是在某些情况下(<code>ViewPager</code>随着页面滑动),这个<code>onCreateView()</code>方法会被调用很多次,这时我们最好对<code>rootView</code>做一下非空判断,否则多次重复执行<code>inflate()</code>操作,并没有任何意义,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class TestFragment extends Fragment &#123;  </div><div class="line">    private View mRootView;  </div><div class="line">    @Override  </div><div class="line">    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) &#123;  </div><div class="line">        if (null == mRootView) &#123;  </div><div class="line">            mRootView = inflater.inflate(layout_id, container, false);  </div><div class="line">        &#125;  </div><div class="line">          </div><div class="line">        return mRootView;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2.<code>Fragment</code>中可以通过<code>saveInstanceState()</code>的方式来保存<code>Fragment</code>的状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">     /** </div><div class="line">     * 从服务端拉取下来的数据 </div><div class="line">     */  </div><div class="line">    private String serverData;  </div><div class="line">  </div><div class="line">    @Override  </div><div class="line">    public void onSaveInstanceState(Bundle outState) &#123;  </div><div class="line">        super.onSaveInstanceState(outState);  </div><div class="line">  </div><div class="line">        outState.putString(&quot;data&quot;, serverData);  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    @Override  </div><div class="line">    public void onActivityCreated(Bundle savedInstanceState) &#123;  </div><div class="line">        super.onActivityCreated(savedInstanceState);  </div><div class="line">        serverData = savedInstanceState.getString(&quot;data&quot;);  </div><div class="line">    &#125;</div><div class="line"></div><div class="line">``` </div><div class="line"></div><div class="line">3.Activities的生命周期都是由ActivityManager来管理的,Fragments的生命周期都是由托管Fragments的Activity来管理的.</div><div class="line"></div><div class="line">4.向Fragment传递参数的最佳方式为使用setArguments()的方法，这样可以避免在横竖屏切换的时候Fragment自动调用自己的无参构造函数，导致数据丢失。</div></pre></td></tr></table></figure>
+<p>private static final String EXTRA_STRING = “extra_string”;  </p>
+<pre><code>public static Fragment newInstance(String data) {  
+    Bundle args = new Bundle();  
+    args.putString(EXTRA_STRING, data);  
+    TestFragment fragment = new TestFragment();  
+    fragment.setArguments(args);  
+    return fragment;  
+}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">5.不应该在Fragment内管理View的状态,View本身有和Activity类似的onSaveInstanceState()方法来保存View的状态,如果有自定义View存在的话,View状态的保存应该在自定义View的内部处理,而不应该使用Fragment来参与.</div><div class="line"></div><div class="line">6.在一个Activity中通过FragmentManager来添加管理Fragment的最佳实践:</div></pre></td></tr></table></figure>
+<p> public class MainActivity extends Activity {<br>        private TestFragment mTestFragment;  </p>
+<pre><code>    @Override  
+    protected void onCreate(Bundle savedInstanceState)  
+    {  
+        super.onCreate(savedInstanceState);  
+        setContentView(R.layout.activity_main);  
+
+        FragmentManager fm = getSupportFragmentManager();  
+        mTestFragment = (TestFragment) fm.findFragmentById(R.id.id_fragment_container);  
+
+        if(mTestFragment == null) {  
+            mTestFragment = new TestFragment();  
+            fm.beginTransaction().add(R.id.id_fragment_container,mTestFragment).commit();  
+        }  
+
+    }  
+
+}
+</code></pre><p>```</p>
+<p>第13行对<code>fragment</code>做了一下非空判断,原因:当<code>Activity</code>因为配置发生改变(旋转屏幕)或内存不足被系统杀死,造成重建时,我们的<code>Fragment</code>会被保存下来,但是会创建新的<code>FragmentManager</code>,新的<code>FragementManager</code>会首先去获取保存下来的<code>fragment</code>队列,重建<code>Fragment</code>队列.所以我们在这里做一下判断,从而恢复之前的状态.防止<code>Fragment</code>被重复创建.</p>
+<p><code>R.id.id_fragement_container</code>在这里有两个意义:①告知<code>fragmentManager</code>此<code>Fragment</code>的位置②此<code>fragment</code>的唯一标识.</p>
+<p>7.<code>FragmentTransaction#commit</code>函数是异步执行的（其把本次transaction的所有操作添加到消息队列里）,所以某些情况下,会有一些奇怪的现象产生,这也是值得我们注意的地方.所幸Android也提供了<code>FragmentManager#executePendingTransactions()</code>方法，强制同步执行。</p>
+<p>8.在使用<code>FragmentManager</code>的<code>add()</code>,<code>replace()</code>方法来管理<code>Framgment</code>的时候,可能会遇到<code>Fragment</code>重叠显示的情况,解决的方法是在调用<code>add()</code>,<code>remove()</code>方法的时候,一定要选择带<code>Tag</code>参数的那个方法.</p>
+<p>9.Google官方推荐使用<code>DialogFragment</code>的方式来管理对话框,它的好处是在屏幕旋转的时候,对话框不会消失,而<code>AlertDialog</code>在这种情况下就会消失掉.</p>
+<p>10.<code>Fragment</code>有一个<code>retainInstance</code>的属性,我们可以在<code>onCreate()</code>方法中,通过调用<code>setRetainInstance()</code>方法来设置它的值.<code>retainInstance</code>默认为<code>false</code>.此时,当屏幕旋转的时候,fragment会随着托管它的<code>Activity</code>一起销毁并重建,但是调用<code>setRetainInstance(true)</code>之后,可以保留<code>Fragment</code>,已保留的fragment不会随activity一起被销毁。相反，它会被一直保留并在需要时原封不动的传递给新的activity.对于已保留的fragment实例，其全部实例变量的值也将保持不变，因此可放心继续使用。还需要格外注意的一点是:只有当activity因设备配置发生改变被销毁时， fragment才会短时间处于被保留状态。如果activity是因操作系统需要回收内存而被销毁，则所有被保留的fragment也会被随之销毁。</p>
+<p>11.我们可以方便的通过<code>ViewPager+Fragment+PagerAdapter</code>的方式实现左右滑动切换界面的效果,其中<code>PagerAdapter</code>有两个子类,<code>FragmentPagerAdapter</code>和<code>FragmentStatePagerAdapter</code>.它们之间有点细微的区别:</p>
+<ul>
+<li><p><code>FragmentPagerAdapter</code>：对于不再需要的fragment，选择调用detach方法，仅销毁视图，并不会销毁fragment实例。</p>
+</li>
+<li><p><code>FragmentStatePagerAdapter</code>：会销毁不再需要的fragment，当当前事务提交以后，会彻底的将fragmeng从当前Activity的FragmentManager中移除，state标明，销毁时，会将其<code>onSaveInstanceState(Bundle outState)</code>中的bundle信息保存下来，当用户切换回来，可以通过该bundle恢复生成新的fragment，也就是说，你可以在<code>onSaveInstanceState(Bundle outState)</code>方法中保存一些数据，在onCreate中进行恢复创建。</p>
+</li>
+</ul>
+<p>所以,我们可以根据<code>ViewPager</code>的页数来灵活的选择自己应该使用Adapter,如果页数比较多的话,优先使用<code>FragmentStatePagerAdapter</code>,反之,则应该使用<code>FragmentPagerAdapter</code>.</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/lchad" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/lchad" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/lchad" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="mailto:liucaidong18@gmail.com" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 lchad<br></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Android Developer">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="lchad">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="聊聊Dagger2的@Inject注解"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Android Developer" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="lchad"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>聊聊Dagger2的@Inject注解 - lchad</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', '[object Object]', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-96017100-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">悄悄问圣僧,女儿美不美?</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about">
+                            
+                                about
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/lchad">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/dagger.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>聊聊Dagger2的@Inject注解</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        2017-03-18
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+<a href="/categories/Android/">Android</a>
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h3 id="Inject"><a href="#Inject" class="headerlink" title="@Inject"></a>@Inject</h3><p>Dagger2中最重要的注解,也是大多数人最先接触到的一个.在学习Dagger2的过程中,也看过不少相关文章,却几乎没看到能对<code>@Inject</code>进行全面详细的介绍,大多数都是一笔带过(可能是因为它确实很”简单”),转而开始剖析 <code>@Component</code>  <code>@Module</code>  <code>@Scope</code> 等深入概念,所以今天这篇文章就说说这个Dagger2中最简单的注解.<br><a id="more"></a><br><code>Inject</code> 这个词的字面意思是 <code>注射,注入</code> ,动词属性,但是仔细想一下<code>@Inject</code>在整个Dagger2框架中做的事并不是进行注入操作,因为这是<code>Component</code>的职责,如果需要一个词来提炼<code>@Inject</code>的功能的话,我觉得 <code>标记</code>这个词是我能想到的最好的;关于<code>@Inject</code>有一点我需要强调一下,那就是<code>@Inject</code>不是<code>单一职责</code>的,它可以修饰<code>变量</code> <code>构造方法</code> <code>普通的方法</code>,而且在修饰以上三者的时候,所发挥的作用也是不同的,所以这对初学者很容易造成混乱,所以接下来我会对着三种情况进行详细的分析.</p>
+<h3 id="1-修饰变量"><a href="#1-修饰变量" class="headerlink" title="1.修饰变量"></a>1.修饰变量</h3><p>这也是最初级用到做多的场景,也很容易理解,代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public class DaggerActivity extends AppCompatActivity &#123;</div><div class="line">    </div><div class="line">    @Inject DaggerPresenter mDaggerPresenter;</div><div class="line">    </div><div class="line">    @Override</div><div class="line">    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_dagger);</div><div class="line">        //传统方式初始化DaggerPresenter</div><div class="line">        //mDaggerPresenter = new DaggerPresenter();</div><div class="line">        geDaggerComponent().inject(this);    //依赖就是这个时刻被注入的</div><div class="line">        mDaggerPresenter.start();</div><div class="line">        //......other code</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当<code>@Inject</code>修饰一个变量时,表示这个变量(<code>mDaggerPresenter</code>)的初始化需要Dagger2来帮我们自动完成.前提就是这个类(<code>DaggerPresenter</code>)的构造方法也要被<code>@Inject</code>来标记.</p>
+<p>在我们的程序执行第9行之前,我们的依赖都是null,依赖注入的所有操作都是在这一行来进行的,而且还有一个限制,那就是这个被<code>@Inject</code>修饰的field不能是private的,这就要涉及到Dagger2的原理了.我们来看一下Dagger2生成的注入代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">//This class is generated automatically by Dagger 2</div><div class="line">public final class DaggerActivity_MembersInjector implements MembersInjector&lt;DaggerActivity&gt; &#123;</div><div class="line"></div><div class="line">    //...</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void injectMembers(DaggerActivity daggerActivity) &#123;</div><div class="line">        if (daggerActivity == null) &#123;</div><div class="line">            throw new NullPointerException(&quot;Cannot inject members into a null reference&quot;);</div><div class="line">        &#125;</div><div class="line">        supertypeInjector.injectMembers(daggerActivity);</div><div class="line">        daggerActivity.mDaggerPresenter = presenterProvider.get();</div><div class="line">        daggerActivity.analyticsManager = analyticsManagerProvider.get();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在编译的时候Dagger2会通过APT(Android Annotation Processor)扫描所有被注解的变量,生成的类 <code>DaggerActivity_MembersInjector</code> 会通过new的方式来产生对应的实例,这也就是注入的过程.</p>
+<h3 id="2-修饰构造方法"><a href="#2-修饰构造方法" class="headerlink" title="2.修饰构造方法"></a>2.修饰构造方法</h3><p>还是先上代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class DaggerPresenter implements IDaggerPresenter &#123;</div><div class="line">    </div><div class="line">    private DaggerDataSource mDaggerDataSource;</div><div class="line"></div><div class="line">    //Inject标记构造方法</div><div class="line">    @Inject</div><div class="line">    public DaggerPresenter(DaggerDataSource daggerDataSource) &#123;</div><div class="line">        this.mDaggerDataSource = daggerDataSource;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Inject</div><div class="line">    public void setPresenter() &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void start() &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在DaggerPresenter中,我们可以看到 构造方法被<code>@Inject</code>标记了,在这里,<code>@Inject</code>还是作为一个标记的,但它的作用却是 提供实例,而且这个构造方法还可以是有参数的, 这个参数也是通过Dagger来提供的(也必须由Dagger提供),如果Dagger在编译期间没有扫描到 DaggerDataSource 被注解的构造方法,那么就会默认传递一个默认值null给DaggerPresenter的构造方法.</p>
+<p>还有一种特殊的情况就是一些第三方的类,我们没有办法对它的源码进行修改,用<code>@Inject</code>来标记的方式行不通了,所以Dagger2给我们提供了另外一种方式提供类的实例,那就是<code>@provides</code>注解</p>
+<p>代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">@Module</div><div class="line">public class DaggerModule &#123;</div><div class="line">    private final ThirdPartyParam mThirdPartyParam;</div><div class="line"></div><div class="line">    public DaggerModule(ThirdPartyParam thirdPartyParam) &#123;</div><div class="line">        this.mThirdPartyParam = thirdPartyParam;</div><div class="line">    &#125;    </div><div class="line"></div><div class="line">    @Provides</div><div class="line">    @PerActivity</div><div class="line">    IMainPresenter provideThirdParty() &#123;</div><div class="line">        return new ThirdParty (mThirdPartyParam);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在Module里,我们通过一个被<code>@Provides</code>注解修饰的方法,使用new的方式来产生ThirdParty的实例.但是ThirdParty构造方法需要的参数实例ThirdPartyParam,不能再由Dagger提供,需要我们自己提供.</p>
+<h3 id="3-修饰普通方法"><a href="#3-修饰普通方法" class="headerlink" title="3.修饰普通方法"></a>3.修饰普通方法</h3><p>其实<code>@Inject</code>还可以修饰普通方法的,这在我用了Dagger2很长一段时间之内都是不知道的.这个用法除了在官方文档,我还没有见过有什么文章介绍过,虽说这样的使用场景很少,但还是有必要介绍一下的.</p>
+<p>还是先看代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">public class DaggerPresenter &#123;</div><div class="line">    private final DaggerView mDaggerView;</div><div class="line">    @Inject</div><div class="line">    public DaggerPresenter(DaggerView daggerView) &#123;</div><div class="line">        mDaggerView = daggerView;</div><div class="line">        Log.d(&quot;DaggerTAG&quot;, &quot;construction method was called in &quot; + System.currentTimeMillis());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">   //Inject标记普通方法</div><div class="line">    @Inject</div><div class="line">    public void methodOne() &#123;</div><div class="line">        Log.d(&quot;DaggerTAG&quot;, &quot;methodOne was called in &quot;+ System.currentTimeMillis());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //Inject标记普通方法</div><div class="line">    @Inject</div><div class="line">    public void methodTwo() &#123;</div><div class="line">        Log.d(&quot;DaggerTAG&quot;, &quot;methodTwo was called in &quot;+ System.currentTimeMillis());</div><div class="line">    &#125;</div><div class="line">    public void start() &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在DaggerPresenter中,有两个方法 <code>methodOne()</code> <code>methodTwo()</code>,他们都被<code>@Inject</code>所修饰,我们分别在构造方法和这两个方法的方法体里面打印出方法的名字和调用的时间,验证一下我们的观点.<br>当<code>@Inject</code>修饰一个普通方法的时候,它的作用是:当构造方法执行完毕之后,会立即执行这个方法,这个我通过log的方式做了一下验证,结果如下</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/174711-8af9f820cee2988f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/174711-abb1d864f50e68a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>我们看到<code>methodOne()</code> 和 <code>methodTwo()</code> 都是在构造方法执行之后立刻被执行到.</p>
+<p>既然有了这种用法,接下来的问题就是为什么需要这种用法呢?它的使用场景在哪里呢?</p>
+<p>接下来我结合Google官方推出的 <a href="https://github.com/googlesamples/android-architecture" target="_blank" rel="external">Android Architecture</a> 开源项目来窥探一下它的使用场景.之前一直在看这个项目的源码,我觉得有一个处能够非常完美的解释<code>@Inject</code>的第三种职责,即<code>方法注入</code>,在<code>todo-mvp-dagger</code>这个分支上的<code>TaskPresenter</code>中,有一段代码我们可以看一下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">final class TasksPresenter implements TasksContract.Presenter &#123;</div><div class="line"></div><div class="line">    private final TasksRepository mTasksRepository;</div><div class="line"></div><div class="line">    private final TasksContract.View mTasksView;</div><div class="line"></div><div class="line">    private TasksFilterType mCurrentFiltering = TasksFilterType.ALL_TASKS;</div><div class="line"></div><div class="line">    private boolean mFirstLoad = true;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Dagger strictly enforces that arguments not marked with &#123;@code @Nullable&#125; are not injected</div><div class="line">     * with &#123;@code @Nullable&#125; values.</div><div class="line">     */</div><div class="line">    @Inject</div><div class="line">    TasksPresenter(TasksRepository tasksRepository, TasksContract.View tasksView) &#123;</div><div class="line">        mTasksRepository = tasksRepository;</div><div class="line">        mTasksView = tasksView;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Method injection is used here to safely reference &#123;@code this&#125; after the object is created.</div><div class="line">     * For more information, see Java Concurrency in Practice.</div><div class="line">     */</div><div class="line">    @Inject</div><div class="line">    void setupListeners() &#123;</div><div class="line">        mTasksView.setPresenter(this);</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">	//other code</div></pre></td></tr></table></figure>
+<p>在TaskPresenter中,我们可以看到<code>setupListeners()</code>方法是被<code>@Inject</code>修饰的,而且它只是一个普通的public方法,它的注释的第一句话非常的有价值:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Method injection is used here to safely reference &#123;@code this&#125; after the object is created.	</div><div class="line">//翻译:在对象被创建之后,这里的方法注入是为了安全的引用`this`</div></pre></td></tr></table></figure>
+<p>具体的做法也就是下面这一行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mTasksView.setPresenter(this);</div></pre></td></tr></table></figure>
+<p>在MVP架构中,我们需要让View层持有Presenter的引用,这个<code>setupListeners()</code>方法做的就是这件事:在Presenter被完全构建完之后,让mTasksView来持有 <strong>被完全构建的this</strong>.而且这是一个自动化的过程,并不需要我们来手动调用,所以如果还有其他类似的需求,我们都可以这样使用<code>@Inject</code>.</p>
+<p>需要注意的是这种被<code>@Inject</code>修饰的普通方法是不应该有返回值,它的参数也是由Dagger2来提供.</p>
+<p>以上就是我对<code>@Inject</code>浅薄的认识.</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/lchad" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/lchad" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/lchad" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="mailto:liucaidong18@gmail.com" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 lchad<br></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
